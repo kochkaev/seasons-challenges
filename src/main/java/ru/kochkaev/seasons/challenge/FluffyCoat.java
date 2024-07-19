@@ -5,16 +5,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Collections;
 
 public class FluffyCoat extends ChallengeObject {
 
     public FluffyCoat() {
-        super(Config.getLang().getString("lang.effect.fluffyCoat.message.trigger"), Collections.singletonList(Weather.getWeatherByID("SNOWY")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("SNOWY")), true);
     }
 
     @Override
@@ -27,14 +27,14 @@ public class FluffyCoat extends ChallengeObject {
         for (ItemStack item : player.getArmorItems()) doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
         if (!doNotWearArmor) {
             if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getLang().getString("lang.effect.fluffyCoat.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.get"));
                 giveEffect(player, StatusEffects.RESISTANCE);
                 spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
             }
             return countOfInARowCalls+1;
         }
         else if (doNotWearArmor && countOfInARowCalls>0) {
-            sendMessage(player, Config.getLang().getString("lang.effect.fluffyCoat.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.remove"));
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
             removeEffect(player, StatusEffects.RESISTANCE);
         }
@@ -42,7 +42,12 @@ public class FluffyCoat extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
         removeEffect(player, StatusEffects.RESISTANCE);
     }
 

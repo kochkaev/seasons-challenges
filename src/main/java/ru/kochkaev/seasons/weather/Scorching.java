@@ -1,8 +1,8 @@
 package ru.kochkaev.seasons.weather;
 
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.WeatherObject;
-import ru.kochkaev.seasons.service.Season;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.WeatherObject;
+import ru.kochkaev.api.seasons.service.Season;
 
 import java.util.Collections;
 
@@ -10,10 +10,10 @@ public class Scorching extends WeatherObject {
 
     public Scorching() {
         super("SCORCHING",
-                Config.getLang().getString("lang.weather.scorching.name"),
-                Config.getLang().getString("lang.weather.scorching.message"),
+                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.scorching.name"),
+                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.scorching.message"),
                 false, false,
-                Config.getConfig().getInt("conf.weather.scorching.chance"),
+                Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.scorching.chance"),
                 Collections.singletonList(Season.getSeasonByID("SUMMER")), false);
     }
 

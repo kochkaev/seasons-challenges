@@ -6,7 +6,7 @@ import ru.kochkaev.api.seasons.object.TXTConfigObject;
 public class DefaultTXTConfig extends TXTConfigObject{
 
     public DefaultTXTConfig() {
-        super("", "api-config", "config");
+        super("Seasons Challenges", "config", "config");
         generate();
     }
 
@@ -56,18 +56,6 @@ public class DefaultTXTConfig extends TXTConfigObject{
         // Beautiful
         addComment("Beautiful");
         addValueAndCommentDefault("conf.weather.beautiful.chance", "20");
-
-        // Settings
-        addVoid();
-        addComment("* SETTINGS");
-        addComment("Tick of day starts");
-        addValueAndCommentDefault("conf.tick.day.start", "0");
-        addComment("Tick of day ends");
-        addValueAndCommentDefault("conf.tick.day.end", "12542");
-        addComment("Seconds per seasons-api tick");
-        addValueAndCommentDefault("conf.tick.secondsPerTick", "1");
-        addComment("Ticks before action starts (for example, damage)");
-        addValueAndCommentDefault("conf.tick.ticksPerAction", "3");
 
     }
 }

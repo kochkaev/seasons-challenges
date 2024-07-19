@@ -6,10 +6,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.util.functional.IFuncRet;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.util.functional.IFuncRet;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class Frostbite extends ChallengeObject {
 
     public Frostbite() {
-        super(Config.getLang().getString("lang.effect.frostbite.message.trigger"), Arrays.asList(Weather.getWeatherByID("SNOWY"), Weather.getWeatherByID("FREEZING")), true);
+        super(Arrays.asList(Weather.getWeatherByID("SNOWY"), Weather.getWeatherByID("FREEZING")), true);
     }
 
     private static final List<Block> waters = Arrays.asList(Blocks.WATER, Blocks.WATER_CAULDRON);
@@ -66,7 +66,12 @@ public class Frostbite extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.frostbite.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
         player.setInPowderSnow(false);
         removeFrozen(task);
     }

@@ -3,17 +3,17 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.block.Blocks;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.util.functional.IFuncRet;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.util.functional.IFuncRet;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Collections;
 
 public class TheShivers extends ChallengeObject {
 
     public TheShivers() {
-        super(Config.getLang().getString("lang.effect.theShivers.message.trigger"), Collections.singletonList(Weather.getWeatherByID("CHILLY")), false);
+        super(Collections.singletonList(Weather.getWeatherByID("CHILLY")), false);
     }
 
     private IFuncRet task;
@@ -26,7 +26,7 @@ public class TheShivers extends ChallengeObject {
     public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (player.getBlockStateAtPos().getBlock().equals(Blocks.WATER) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getLang().getString("lang.effect.theShivers.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.theShivers.message.get"));
                 task = giveFrozen(player);
             }
             if (countOfInARowCalls % ticksPerAction == 0) {
@@ -40,7 +40,12 @@ public class TheShivers extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.theShivers.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
 
     }
 }

@@ -8,9 +8,9 @@ import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -19,7 +19,7 @@ import java.util.List;
 public class Sweating extends ChallengeObject {
 
     public Sweating() {
-        super(Config.getLang().getString("lang.effect.sweating.message.trigger"), Collections.singletonList(Weather.getWeatherByID("HOT")), false);
+        super(Collections.singletonList(Weather.getWeatherByID("HOT")), false);
     }
 
     private static final List<Block> waters = Arrays.asList(Blocks.WATER, Blocks.WATER_CAULDRON);
@@ -35,7 +35,7 @@ public class Sweating extends ChallengeObject {
         if (isFullArmor) {
             if (!(player.getSteppingBlockState().getBlock() == Blocks.WATER || waters.contains(player.getBlockStateAtPos().getBlock()))) {
                 if (countOfInARowCalls == 0)
-                    sendMessage(player, Config.getLang().getString("lang.effect.sweating.message.get"));
+                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.sweating.message.get"));
                 else if (countOfInARowCalls % ticksPerAction == 0) {
                     damageHot(player);
                     spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
@@ -49,7 +49,7 @@ public class Sweating extends ChallengeObject {
             }
         }
         else if (countOfInARowCalls > 0) {
-            sendMessage(player, Config.getLang().getString("lang.effect.sweating.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.sweating.message.remove"));
             return -1 - ticksPerAction;
         }
         else if (countOfInARowCalls == -1) {
@@ -61,7 +61,12 @@ public class Sweating extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.sweating.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
         removeEffect(player, StatusEffects.MINING_FATIGUE);
     }
 }

@@ -5,9 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import java.util.List;
 public class WarmingStew extends ChallengeObject {
 
     public WarmingStew() {
-        super(Config.getLang().getString("lang.effect.warmingStew.message.trigger"), Collections.singletonList(Weather.getWeatherByID("COLD")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("COLD")), true);
     }
 
     private final List<Item> stews = Arrays.asList(Items.BEETROOT_SOUP, Items.MUSHROOM_STEW, Items.RABBIT_STEW);
@@ -32,7 +32,12 @@ public class WarmingStew extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
 
     }
 
@@ -40,7 +45,7 @@ public class WarmingStew extends ChallengeObject {
         if (isAllowed()){
             ServerPlayerEntity player = (ServerPlayerEntity) args.getFirst();
             if (stews.contains(player.getActiveItem().getItem())) {
-                sendMessage(player, Config.getLang().getString("lang.effect.warmingStew.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.get"));
                 spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
                 giveEffect(player, StatusEffects.REGENERATION, 20 * 10, 0);
             }

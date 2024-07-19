@@ -5,10 +5,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.object.EventObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.object.EventObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Devastation extends ChallengeObject {
     private static EventObject onHeal;
 
     public Devastation() {
-        super(Config.getLang().getString("lang.effect.devastation.message.trigger"), Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
     }
 
     @Override
@@ -32,7 +32,12 @@ public class Devastation extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.devastation.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
 
     }
 

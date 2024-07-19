@@ -5,16 +5,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Collections;
 
 public class PrimitiveHeating extends ChallengeObject {
 
     public PrimitiveHeating() {
-        super(Config.getLang().getString("lang.effect.primitiveHeating.message.trigger"), Collections.singletonList(Weather.getWeatherByID("COLD")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("COLD")), true);
     }
 
     private static Item[] hots = {Items.LAVA_BUCKET, Items.BLAZE_POWDER, Items.BLAZE_ROD,
@@ -29,13 +29,13 @@ public class PrimitiveHeating extends ChallengeObject {
         boolean  isHot  = false;
         for (Item item : hots) if (player.getInventory().count(item) > 0) isHot = true;
         if (isHot && countOfInARowCalls==0) {
-            sendMessage(player, Config.getLang().getString("lang.effect.primitiveHeating.message.get"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.primitiveHeating.message.get"));
             giveEffect(player, StatusEffects.RESISTANCE);
             spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
             return countOfInARowCalls+1;
         }
         else if (!isHot && countOfInARowCalls>0) {
-            sendMessage(player, Config.getLang().getString("lang.effect.primitiveHeating.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.primitiveHeating.message.remove"));
             removeEffect(player, StatusEffects.RESISTANCE);
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
         }
@@ -46,7 +46,12 @@ public class PrimitiveHeating extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.primitiveHeating.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
         removeEffect(player, StatusEffects.RESISTANCE);
     }
 }

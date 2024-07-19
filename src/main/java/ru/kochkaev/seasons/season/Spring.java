@@ -1,12 +1,12 @@
 package ru.kochkaev.seasons.season;
 
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.SeasonObject;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.SeasonObject;
 
 public class Spring extends SeasonObject {
 
     public Spring() {
-        super("SPRING", Config.getLang().getString("lang.season.spring.name"), Config.getLang().getString("lang.season.spring.message"));
+        super("SPRING", Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.spring.name"), Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.spring.message"));
     }
 
     @Override

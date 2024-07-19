@@ -5,18 +5,18 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.util.functional.IFuncRet;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Task;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.util.functional.IFuncRet;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Task;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.*;
 
 public class StrongCurrent extends ChallengeObject {
 
     public StrongCurrent() {
-        super(Config.getLang().getString("lang.effect.strongCurrent.message.trigger"), Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
     }
 
     private static final List<EntityType> boats = Arrays.asList(EntityType.BOAT, EntityType.CHEST_BOAT);
@@ -61,7 +61,7 @@ public class StrongCurrent extends ChallengeObject {
 //                }
         else if (player.getBlockStateAtPos().getBlock() == Blocks.WATER){
             if (countOfInARowCalls == 1)
-                sendMessage(player, Config.getLang().getString("lang.effect.strongCurrent.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.strongCurrent.message.get"));
             else if (countOfInARowCalls == ticksPerAction) {
                 spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
                 giveEffect(player, StatusEffects.NAUSEA);
@@ -82,7 +82,7 @@ public class StrongCurrent extends ChallengeObject {
                     spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, true, 1,10);
                     removeEffect(player, StatusEffects.NAUSEA);
                     removeEffect(player, StatusEffects.MINING_FATIGUE);
-                    sendMessage(player, Config.getLang().getString("lang.effect.strongCurrent.message.remove"));
+                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.strongCurrent.message.remove"));
                 }
             }
             return countOfInARowCalls+1;
@@ -91,7 +91,12 @@ public class StrongCurrent extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.strongCurrent.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
         removeEffect(player, StatusEffects.MINING_FATIGUE);
         removeEffect(player, StatusEffects.NAUSEA);
     }

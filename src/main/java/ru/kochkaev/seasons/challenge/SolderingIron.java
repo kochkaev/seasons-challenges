@@ -4,9 +4,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,7 +15,7 @@ import java.util.List;
 public class SolderingIron extends ChallengeObject {
 
     public SolderingIron() {
-        super(Config.getLang().getString("lang.effect.solderingIron.message.trigger"), Collections.singletonList(Weather.getWeatherByID("SCORCHING")), false);
+        super(Collections.singletonList(Weather.getWeatherByID("SCORCHING")), false);
     }
 
     private static final List<Item> items = Arrays.asList(Items.BUCKET, Items.IRON_INGOT, Items.IRON_BLOCK,
@@ -33,7 +33,7 @@ public class SolderingIron extends ChallengeObject {
 //        Main.getLogger().info(player.getInventory().getMainHandStack().getItem().toString());
         boolean contains = items.contains(player.getInventory().getMainHandStack().getItem());
         if (contains) {
-            if (countOfInARowCalls == 0) sendMessage(player, Config.getLang().getString("lang.effect.solderingIron.message.get"));
+            if (countOfInARowCalls == 0) sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.solderingIron.message.get"));
             else {
                 spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0,10);
                 damageHot(player);
@@ -44,7 +44,12 @@ public class SolderingIron extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.solderingIron.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
 
     }
 }

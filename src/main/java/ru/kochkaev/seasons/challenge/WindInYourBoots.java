@@ -3,9 +3,9 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Collections;
 import java.util.Random;
@@ -13,7 +13,7 @@ import java.util.Random;
 public class WindInYourBoots extends ChallengeObject {
 
     public WindInYourBoots() {
-        super(Config.getLang().getString("lang.effect.windInYourBoots.message.trigger"), Collections.singletonList(Weather.getWeatherByID("BREEZY")), false);
+        super(Collections.singletonList(Weather.getWeatherByID("BREEZY")), false);
     }
 
     @Override
@@ -36,7 +36,12 @@ public class WindInYourBoots extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.windInYourBoots.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
 
     }
 }

@@ -6,7 +6,7 @@ import ru.kochkaev.api.seasons.object.TXTConfigObject;
 public class DefaultTXTLangRU extends TXTConfigObject {
     
     public DefaultTXTLangRU() {
-        super("", "RU_ru", "lang");
+        super("Seasons Challenges", "RU_ru", "lang");
         generate();
     }
 

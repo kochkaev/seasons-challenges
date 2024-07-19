@@ -4,9 +4,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Collections;
 import java.util.Random;
@@ -14,7 +14,7 @@ import java.util.Random;
 public class HoldOntoYourHat extends ChallengeObject {
 
     public HoldOntoYourHat() {
-        super(Config.getLang().getString("lang.effect.holdOntoYourHat.message.trigger"), Collections.singletonList(Weather.getWeatherByID("BREEZY")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("BREEZY")), true);
     }
 
     @Override
@@ -37,13 +37,18 @@ public class HoldOntoYourHat extends ChallengeObject {
             player.dropStack(helmet);
             player.getInventory().removeOne(helmet);
             spawnParticles(player, ParticleTypes.CLOUD, false, 1, 5);
-            sendMessage(player, Config.getLang().getString("lang.effect.holdOntoYourHat.message.get"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.holdOntoYourHat.message.get"));
         }
         return 0;
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.holdOntoYourHat.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
 
     }
 }

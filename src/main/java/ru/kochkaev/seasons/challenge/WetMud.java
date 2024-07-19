@@ -5,9 +5,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.ChallengeObject;
-import ru.kochkaev.seasons.service.Weather;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.ChallengeObject;
+import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import java.util.List;
 public class WetMud extends ChallengeObject {
 
     public WetMud() {
-        super(Config.getLang().getString("lang.effect.wetMud.message.trigger"), Collections.singletonList(Weather.getWeatherByID("RAINY")), true);
+        super(Collections.singletonList(Weather.getWeatherByID("RAINY")), true);
     }
 
     private final static List<Block> muddy = Arrays.asList(Blocks.MUD, Blocks.DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND);
@@ -30,7 +30,7 @@ public class WetMud extends ChallengeObject {
         if (muddy.contains(player.getSteppingBlockState().getBlock()) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
                 giveEffect(player, StatusEffects.SLOWNESS);
-                sendMessage(player, Config.getLang().getString("lang.effect.wetMud.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.wetMud.message.get"));
                 spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
             }
             return countOfInARowCalls+1;
@@ -43,7 +43,12 @@ public class WetMud extends ChallengeObject {
     }
 
     @Override
-    public void challengeEnd(ServerPlayerEntity player) {
+    public void onChallengeStart(ServerPlayerEntity player) {
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.wetMud.message.trigger"));
+    }
+
+    @Override
+    public void onChallengeEnd(ServerPlayerEntity player) {
         removeEffect(player, StatusEffects.SLOWNESS);
     }
 }

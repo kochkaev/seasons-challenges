@@ -6,6 +6,10 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+ext {
+    pass = findProperty('pass') ?: ''
+}
+
 base {
     archivesName = project.archives_base_name
 }
@@ -44,7 +48,9 @@ repositories {
         url = 'https://maven.pkg.github.com/kochkaev/seasons-api'
         credentials {
             username = "kochkaev"
-            password = ""
+//            password = ""
+//            password = System.getenv('ORG_GRADLE_PROJECT_pass')
+            password = pass
         }
     }
 }

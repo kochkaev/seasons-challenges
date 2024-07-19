@@ -1,12 +1,12 @@
 package ru.kochkaev.seasons.season;
 
-import ru.kochkaev.seasons.config.Config;
-import ru.kochkaev.seasons.object.SeasonObject;
+import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.object.SeasonObject;
 
 public class Winter extends SeasonObject {
 
     public Winter() {
-        super("WINTER", Config.getLang().getString("lang.season.winter.name"), Config.getLang().getString("lang.season.winter.message"));
+        super("WINTER", Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.winter.name"), Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.winter.message"));
     }
 
     @Override
