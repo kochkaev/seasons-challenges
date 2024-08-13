@@ -3,10 +3,10 @@ package ru.kochkaev.seasons.config.lang;
 import ru.kochkaev.api.seasons.config.Config;
 import ru.kochkaev.api.seasons.object.TXTConfigObject;
 
-public class DefaultTXTLangRU extends TXTConfigObject {
-    
-    public DefaultTXTLangRU() {
-        super("Seasons Challenges", "RU_ru", "lang");
+public class DefaultTXTLangEN extends TXTConfigObject {
+
+    public DefaultTXTLangEN() {
+        super("Seasons Challenges", "EN_us", "lang");
     }
 
     public void generate() {
@@ -20,72 +20,72 @@ public class DefaultTXTLangRU extends TXTConfigObject {
         addComment("* SEASON");
         // Winter
         addComment("Winter");
-        addValueAndCommentDefault("lang.season.winter.name", "&bЗима");
-        addValueAndCommentDefault("lang.season.winter.message", "&eДа свершится новогоднее чудо! Наступила %season%");
+        addValueAndCommentDefault("lang.season.winter.name", "&bWinter");
+        addValueAndCommentDefault("lang.season.winter.message", "&eA few snowflakes fall and the world grows cold, time for %season% to make its mark...");
         // Spring
         addComment("Spring");
-        addValueAndCommentDefault("lang.season.spring.name", "&2Весна");
-        addValueAndCommentDefault("lang.season.spring.message", "&eС глаз долой весь снег! Наступила %season%");
+        addValueAndCommentDefault("lang.season.spring.name", "&2Spring");
+        addValueAndCommentDefault("lang.season.spring.message", "&eThe sun rises, the flowers smell fresh and there is a %season% in your step... literally!");
         // Summer
         addComment("Summer");
-        addValueAndCommentDefault("lang.season.summer.name", "&aЛето");
-        addValueAndCommentDefault("lang.season.summer.message", "&eНастало время пекла! Наступило %season%");
+        addValueAndCommentDefault("lang.season.summer.name", "&aSummer");
+        addValueAndCommentDefault("lang.season.summer.message", "&eToday feels warmer than the others, maybe even too warm... %season% has arrived!");
         // Fall
         addComment("Fall");
-        addValueAndCommentDefault("lang.season.fall.name", "&6Осень");
-        addValueAndCommentDefault("lang.season.fall.message", "&eУнылая пора! Очей очарованье! Наступила %season%");
+        addValueAndCommentDefault("lang.season.fall.name", "&6Fall");
+        addValueAndCommentDefault("lang.season.fall.message", "&eA cool breeze whispers to the leaves that fall from the trees, it is %season%!");
 
         /// WEATHER
         addVoid();
         addComment("* WEATHER");
         // Night
         addComment("Night");
-        addValueAndCommentDefault("lang.weather.night.name", "&7Ночь");
-        addValueAndCommentDefault("lang.weather.night.message", "&7Кажется темнеет... Наступает %weather%");
+        addValueAndCommentDefault("lang.weather.night.name", "&7Calm");
+        addValueAndCommentDefault("lang.weather.night.message", "&7The world rests with the sun and all is calm... Until the mobs come to eat you!");
         // Snowy
         addComment("Snowy");
-        addValueAndCommentDefault("lang.weather.snowy.name", "&7Снежно");
-        addValueAndCommentDefault("lang.weather.snowy.message", "&7Белый туман одеялом ложится на крыши и цветы. Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.snowy.name", "&7Snowy");
+        addValueAndCommentDefault("lang.weather.snowy.message", "&7A great white blanket covers the world, it is %weather%");
         // Freezing
         addComment("Freezing");
-        addValueAndCommentDefault("lang.weather.freezing.name", "&9Морозно");
-        addValueAndCommentDefault("lang.weather.freezing.message", "&3Вся вода замерзает! Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.freezing.name", "&9Freezing");
+        addValueAndCommentDefault("lang.weather.freezing.message", "&3The water freezes with a sheet of ice and you feel a great cold, it is %weather%");
         // Stormy
         addComment("Stormy");
-        addValueAndCommentDefault("lang.weather.stormy.name", "&cШторм");
-        addValueAndCommentDefault("lang.weather.stormy.message", "&cГремит январская вьюга! Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.stormy.name", "&cStormy");
+        addValueAndCommentDefault("lang.weather.stormy.message", "&cA great %weather% &cbrews, the Gods are angry... Brace yourself!");
         // Cold
         addComment("Cold");
-        addValueAndCommentDefault("lang.weather.cold.name", "&9Холодно");
-        addValueAndCommentDefault("lang.weather.cold.message", "&3На окнах появляется иней. Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.cold.name", "&9Cold");
+        addValueAndCommentDefault("lang.weather.cold.message", "&3&3The water is so very %weather% &3today");
         // Warm
         addComment("Warm");
-        addValueAndCommentDefault("lang.weather.warm.name", "&eТепло");
-        addValueAndCommentDefault("lang.weather.warm.message", "&eПриятный тёплый ветерок обдувает вас. Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.warm.name", "&eWarm");
+        addValueAndCommentDefault("lang.weather.warm.message", "A soothing warmth hugs you as you move, it is a %weather% &eday");
         // Hot
         addComment("Hot");
-        addValueAndCommentDefault("lang.weather.hot.name", "&eЖарко");
-        addValueAndCommentDefault("lang.weather.hot.message", "&eНас как в печку поместили! Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.hot.name", "&eHot");
+        addValueAndCommentDefault("lang.weather.hot.message", "&eIt is going to be very %weather% &etoday");
         // Scorching
         addComment("Scorching");
-        addValueAndCommentDefault("lang.weather.scorching.name", "&eНевыносимо жарко");
-        addValueAndCommentDefault("lang.weather.scorching.message", "&eСейчас на улице такое пекло, что кожа слазит. Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.scorching.name", "&eScorching");
+        addValueAndCommentDefault("lang.weather.scorching.message", "&eThe sun burns your skin and the ground hurts to touch, it is %weather%");
         // Rainy
         addComment("Rainy");
-        addValueAndCommentDefault("lang.weather.rainy.name", "&9Дождливо");
-        addValueAndCommentDefault("lang.weather.rainy.message", "&3Вы лицезреете сильнейший ливень! Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.rainy.name", "&9Rainy");
+        addValueAndCommentDefault("lang.weather.rainy.message", "&3A loud rain falls and wets the ground, it is %weather%");
         // Chilly
         addComment("Chilly");
-        addValueAndCommentDefault("lang.weather.chilly.name", "&9Прохладно");
-        addValueAndCommentDefault("lang.weather.chilly.message", "&3Вы дрожите от холода! Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.chilly.name", "&9Chilly");
+        addValueAndCommentDefault("lang.weather.chilly.message", "&3You shiver as frost glistens around you, it is very %weather%");
         // Breezy
         addComment("Breezy");
-        addValueAndCommentDefault("lang.weather.breezy.name", "&7Свежо");
-        addValueAndCommentDefault("lang.weather.breezy.message", "&7Вас обдувает лёгкий ветерок. Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.breezy.name", "&7Breezy");
+        addValueAndCommentDefault("lang.weather.breezy.message", "&7A cool breeze touches your skin, it is going to be %weather%");
         // Beautiful
         addComment("Beautiful");
-        addValueAndCommentDefault("lang.weather.beautiful.name", "&aКрасиво");
-        addValueAndCommentDefault("lang.weather.beautiful.message", "&aСолнце светит, жизнь прекрасна! Сегодня %weather%");
+        addValueAndCommentDefault("lang.weather.beautiful.name", "&aBeautiful");
+        addValueAndCommentDefault("lang.weather.beautiful.message", "&aThe sun is shining, the grass is green and the weather is %weather%");
 
         /// CHALLENGES
         addVoid();

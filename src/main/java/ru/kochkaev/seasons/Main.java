@@ -14,7 +14,7 @@ public class Main implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Config.regModConfig(new Config("Seasons Challenges", "RU_ru"));
+		Config.regModConfig(new Config("Seasons Challenges", "EN_us"));
 		Register.registerAllInPackage("ru.kochkaev.seasons.config");
 		Register.registerAllInPackage("ru.kochkaev.seasons.season");
 		Register.registerAllInPackage("ru.kochkaev.seasons.weather");
