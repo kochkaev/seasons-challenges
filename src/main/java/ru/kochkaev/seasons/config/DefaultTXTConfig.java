@@ -7,10 +7,9 @@ public class DefaultTXTConfig extends TXTConfigObject{
 
     public DefaultTXTConfig() {
         super("Seasons Challenges", "config", "config");
-        generate();
     }
 
-    private void generate() {
+    public void generate() {
 
         String copyright = Config.getCopyright() + "#\n# It's mod config!\n#" +
                 "\n# ** CHANCE =  chance of this weather coming on a new day (less than 100)\n#" +
