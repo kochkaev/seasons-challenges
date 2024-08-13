@@ -14,7 +14,7 @@ import java.util.Random;
 public class HoldOntoYourHat extends ChallengeObject {
 
     public HoldOntoYourHat() {
-        super(Collections.singletonList(Weather.getWeatherByID("BREEZY")), true);
+        super("HoldOntoYourHat", Collections.singletonList(Weather.getWeatherByID("BREEZY")), true);
     }
 
     @Override

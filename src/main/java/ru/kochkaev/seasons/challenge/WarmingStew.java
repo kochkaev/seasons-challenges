@@ -1,6 +1,7 @@
 package ru.kochkaev.seasons.challenge;
 
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
@@ -16,14 +17,14 @@ import java.util.List;
 public class WarmingStew extends ChallengeObject {
 
     public WarmingStew() {
-        super(Collections.singletonList(Weather.getWeatherByID("COLD")), true);
+        super("WarmingStew", Collections.singletonList(Weather.getWeatherByID("COLD")), true);
     }
 
     private final List<Item> stews = Arrays.asList(Items.BEETROOT_SOUP, Items.MUSHROOM_STEW, Items.RABBIT_STEW);
 
     @Override
     public void register() {
-        registerOnEventMethod("ON_CONSUME", this::onConsume);
+//        registerOnEventMethod("ON_CONSUME", this::onConsume);
     }
 
     @Override
@@ -41,14 +42,14 @@ public class WarmingStew extends ChallengeObject {
 
     }
 
-    public void onConsume(List<Object> args) {
+    public boolean onConsume(PlayerEntity player) {
         if (isAllowed()){
-            ServerPlayerEntity player = (ServerPlayerEntity) args.getFirst();
             if (stews.contains(player.getActiveItem().getItem())) {
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.get"));
-                spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
-                giveEffect(player, StatusEffects.REGENERATION, 20 * 10, 0);
+                sendMessage((ServerPlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.get"));
+                spawnParticles((ServerPlayerEntity) player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
+                giveEffect((ServerPlayerEntity) player, StatusEffects.REGENERATION, 20 * 10, 0);
             }
         }
+        return true;
     }
 }

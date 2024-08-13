@@ -16,7 +16,7 @@ import java.util.*;
 public class StrongCurrent extends ChallengeObject {
 
     public StrongCurrent() {
-        super(Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
+        super("StrongCurrent", Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
     }
 
     private static final List<EntityType> boats = Arrays.asList(EntityType.BOAT, EntityType.CHEST_BOAT);

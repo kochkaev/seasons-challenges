@@ -14,7 +14,7 @@ import java.util.Collections;
 public class FluffyCoat extends ChallengeObject {
 
     public FluffyCoat() {
-        super(Collections.singletonList(Weather.getWeatherByID("SNOWY")), true);
+        super("FluffyCoat", Collections.singletonList(Weather.getWeatherByID("SNOWY")), true);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class FluffyCoat extends ChallengeObject {
             }
             return countOfInARowCalls+1;
         }
-        else if (doNotWearArmor && countOfInARowCalls>0) {
+        else if (countOfInARowCalls>0) {
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.remove"));
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
             removeEffect(player, StatusEffects.RESISTANCE);

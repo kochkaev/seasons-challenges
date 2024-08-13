@@ -15,7 +15,7 @@ import java.util.List;
 public class SolderingIron extends ChallengeObject {
 
     public SolderingIron() {
-        super(Collections.singletonList(Weather.getWeatherByID("SCORCHING")), false);
+        super("SolideringIron", Collections.singletonList(Weather.getWeatherByID("SCORCHING")), false);
     }
 
     private static final List<Item> items = Arrays.asList(Items.BUCKET, Items.IRON_INGOT, Items.IRON_BLOCK,

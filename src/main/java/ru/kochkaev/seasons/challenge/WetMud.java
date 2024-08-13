@@ -16,7 +16,7 @@ import java.util.List;
 public class WetMud extends ChallengeObject {
 
     public WetMud() {
-        super(Collections.singletonList(Weather.getWeatherByID("RAINY")), true);
+        super("WetMud", Collections.singletonList(Weather.getWeatherByID("RAINY")), true);
     }
 
     private final static List<Block> muddy = Arrays.asList(Blocks.MUD, Blocks.DIRT, Blocks.DIRT_PATH, Blocks.FARMLAND);
@@ -29,7 +29,7 @@ public class WetMud extends ChallengeObject {
     public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (muddy.contains(player.getSteppingBlockState().getBlock()) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
-                giveEffect(player, StatusEffects.SLOWNESS);
+                giveEffect(player, StatusEffects.SLOWNESS, 1);
                 sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.wetMud.message.get"));
                 spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
             }

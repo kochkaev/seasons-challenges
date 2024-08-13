@@ -19,7 +19,7 @@ import java.util.List;
 public class Sweating extends ChallengeObject {
 
     public Sweating() {
-        super(Collections.singletonList(Weather.getWeatherByID("HOT")), false);
+        super("Sweating", Collections.singletonList(Weather.getWeatherByID("HOT")), false);
     }
 
     private static final List<Block> waters = Arrays.asList(Blocks.WATER, Blocks.WATER_CAULDRON);

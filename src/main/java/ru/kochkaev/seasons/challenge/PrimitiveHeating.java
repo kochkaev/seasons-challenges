@@ -14,7 +14,7 @@ import java.util.Collections;
 public class PrimitiveHeating extends ChallengeObject {
 
     public PrimitiveHeating() {
-        super(Collections.singletonList(Weather.getWeatherByID("COLD")), true);
+        super("PrimitiveHeating", Collections.singletonList(Weather.getWeatherByID("COLD")), true);
     }
 
     private static Item[] hots = {Items.LAVA_BUCKET, Items.BLAZE_POWDER, Items.BLAZE_ROD,

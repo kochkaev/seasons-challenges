@@ -13,7 +13,7 @@ import java.util.Random;
 public class WindInYourBoots extends ChallengeObject {
 
     public WindInYourBoots() {
-        super(Collections.singletonList(Weather.getWeatherByID("BREEZY")), false);
+        super("WindInYourBoots", Collections.singletonList(Weather.getWeatherByID("BREEZY")), false);
     }
 
     @Override

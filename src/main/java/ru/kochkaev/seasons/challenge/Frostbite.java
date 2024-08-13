@@ -17,7 +17,7 @@ import java.util.List;
 public class Frostbite extends ChallengeObject {
 
     public Frostbite() {
-        super(Arrays.asList(Weather.getWeatherByID("SNOWY"), Weather.getWeatherByID("FREEZING")), true);
+        super("Frostbite", Arrays.asList(Weather.getWeatherByID("SNOWY"), Weather.getWeatherByID("FREEZING")), true);
     }
 
     private static final List<Block> waters = Arrays.asList(Blocks.WATER, Blocks.WATER_CAULDRON);

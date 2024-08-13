@@ -15,7 +15,7 @@ import java.util.List;
 public class HotSand extends ChallengeObject {
 
     public HotSand() {
-        super(Collections.singletonList(Weather.getWeatherByID("SCORCHING")), false);
+        super("HotSand", Collections.singletonList(Weather.getWeatherByID("SCORCHING")), false);
     }
 
     private static final List<Block> hots = Arrays.asList(Blocks.SAND, Blocks.RED_SAND);

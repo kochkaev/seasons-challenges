@@ -13,7 +13,7 @@ import java.util.Collections;
 public class TheShivers extends ChallengeObject {
 
     public TheShivers() {
-        super(Collections.singletonList(Weather.getWeatherByID("CHILLY")), false);
+        super("TheShivers", Collections.singletonList(Weather.getWeatherByID("CHILLY")), false);
     }
 
     private IFuncRet task;

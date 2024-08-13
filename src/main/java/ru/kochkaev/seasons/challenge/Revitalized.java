@@ -12,7 +12,7 @@ import java.util.Collections;
 public class Revitalized extends ChallengeObject {
 
     public Revitalized() {
-        super(Collections.singletonList(Weather.getWeatherByID("BEAUTIFUL")), false);
+        super("Revitalized", Collections.singletonList(Weather.getWeatherByID("BEAUTIFUL")), false);
     }
 
     @Override
