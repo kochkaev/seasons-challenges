@@ -11,15 +11,15 @@ public class Night extends WeatherObject {
 
     public Night() {
         super("NIGHT",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.name"),
                 null, null,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.night.chance"),
                 Arrays.asList(Season.getSeasonByID("WINTER"), Season.getSeasonByID("SPRING"), Season.getSeasonByID("SUMMER"), Season.getSeasonByID("FALL")), true);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.message"));
     }
 
     @Override

@@ -11,15 +11,15 @@ public class Warm extends WeatherObject {
 
     public Warm() {
         super("WARM",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.warm.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.warm.name"),
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.warm.chance"),
                 Collections.singletonList(Season.getSeasonByID("SUMMER")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.warm.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.warm.message"));
     }
 
     @Override

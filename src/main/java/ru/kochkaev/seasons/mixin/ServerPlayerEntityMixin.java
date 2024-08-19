@@ -6,7 +6,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Implements;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,7 +18,7 @@ import ru.kochkaev.seasons.challenge.WarmingStew;
 import java.util.Collections;
 
 @Mixin(ServerPlayerEntity.class)
-public class ServerPlayerEntityMixin extends PlayerEntity {
+public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
 
     public ServerPlayerEntityMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
@@ -31,11 +33,14 @@ public class ServerPlayerEntityMixin extends PlayerEntity {
         }
     }
 
-    public boolean isSpectator() {
-        return false;
-    }
-
-    public boolean isCreative() {
-        return false;
-    }
+//    @Shadow(prefix="seasonsChallenges$")
+//    public abstract boolean seasonsChallenges$isSpectator();
+//    public boolean isSpectator() {
+//        return false;
+//    }
+//    @Shadow(prefix="seasonsChallenges$")
+//    public abstract boolean seasonsChallenges$isCreative();
+//    public boolean isCreative() {
+//        return false;
+//    }
 }

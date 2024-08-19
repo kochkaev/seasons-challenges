@@ -7,12 +7,12 @@ import net.minecraft.server.MinecraftServer;
 public class Fall extends SeasonObject {
 
     public Fall() {
-        super("FALL", Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.fall.name"));
+        super("FALL", () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.fall.name"));
     }
 
     @Override
-    public void onSeasonSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.fall.message"));
+    public void onSeasonSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.fall.message"));
     }
     @Override
     public void onSeasonRemove() {

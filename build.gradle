@@ -44,6 +44,10 @@ repositories {
 ////        url: "file:///D:/GitHub/seasons-api/src/main/java/"
 //    }
     maven {
+        name = "Nucleoid"
+        url = "https://maven.nucleoid.xyz/"
+    }
+    maven {
         name = "GitHubPackages"
         url = 'https://maven.pkg.github.com/kochkaev/seasons-api'
         credentials {

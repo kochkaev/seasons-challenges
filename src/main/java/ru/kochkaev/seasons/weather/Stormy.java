@@ -11,15 +11,15 @@ public class Stormy extends WeatherObject {
 
     public Stormy() {
         super("STORMY",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.stormy.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.stormy.name"),
                 true, true,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.stormy.chance"),
                 Collections.singletonList(Season.getSeasonByID("FALL")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.stormy.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.stormy.message"));
     }
 
     @Override

@@ -11,15 +11,15 @@ public class Breezy extends WeatherObject {
 
     public Breezy() {
         super("BREEZY",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.breezy.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.breezy.name"),
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.breezy.chance"),
                 Arrays.asList(Season.getSeasonByID("SPRING"), Season.getSeasonByID("FALL")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.breezy.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.breezy.message"));
     }
 
     @Override

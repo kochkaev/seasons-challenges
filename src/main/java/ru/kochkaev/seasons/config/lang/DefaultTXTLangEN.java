@@ -12,8 +12,12 @@ public class DefaultTXTLangEN extends TXTConfigObject {
     public void generate() {
 
         String copyright = Config.getCopyright() + "#\n# It's mod lang!\n#" +
-                "\n# ** NAME = Display name of the Weather/Season\n# ** MESSAGE = Message, sends to chat on trigger\n#\n# Placeholders:\n#   - %season% - replaces to current season.\n" +
-                "#   - %weather% - replaces to current weather.\n#   - & - replaces to \"§\" (colour codes).\n#\n# Other config files:\n#   - current.json - information about the current Weather/Season,\n#     is updated when the server is turned off.\n#   - lang - directory, contains translations of mod names/messages.\n\n\n";
+                "\n# ** NAME = Display name of the Weather/Season\n# ** MESSAGE = Message, sends to chat on trigger\n#\n# Other config files:\n#   - current.json - information about the current Weather/Season,\n#     is updated when the server is turned off.\n#   - lang - directory, contains translations of mod names/messages.\n#" +
+                "\n# You can use placeholders: \n#   - & - insert color (replaces to paragraph symbol)\n#   - %message% - will be replaced to message in specific context" +
+                "\n#   - %seasons:weather% - insert current weather name (from langs)\n#   - %seasons:weather-previous% - insert previous weather name (from langs)\n#   - %seasons:season% - insert current season name (from langs)" +
+                "\n#   - %seasons:lang% - insert current lang key\n#   - %seasons:display-name% - insert Seasons mod display name (lang.message.seasonsModDisplayName in langs)" +
+                "\n#   - %seasons:title-new-day% - insert new day title message (from langs)\n#   - %seasons:title-info% - insert new day info title message (from langs)" +
+                "\n#   - %seasons:actionbar% - insert actionbar title message format\n#   - And others if you have installed PlaceholderAPI\n\n\n";
         addString(copyright);
 
         /// SEASON
@@ -21,19 +25,19 @@ public class DefaultTXTLangEN extends TXTConfigObject {
         // Winter
         addComment("Winter");
         addValueAndCommentDefault("lang.season.winter.name", "&bWinter");
-        addValueAndCommentDefault("lang.season.winter.message", "&eA few snowflakes fall and the world grows cold, time for %season% to make its mark...");
+        addValueAndCommentDefault("lang.season.winter.message", "&eA few snowflakes fall and the world grows cold, time for %seasons:season% to make its mark...");
         // Spring
         addComment("Spring");
         addValueAndCommentDefault("lang.season.spring.name", "&2Spring");
-        addValueAndCommentDefault("lang.season.spring.message", "&eThe sun rises, the flowers smell fresh and there is a %season% in your step... literally!");
+        addValueAndCommentDefault("lang.season.spring.message", "&eThe sun rises, the flowers smell fresh and there is a %seasons:season% in your step... literally!");
         // Summer
         addComment("Summer");
         addValueAndCommentDefault("lang.season.summer.name", "&aSummer");
-        addValueAndCommentDefault("lang.season.summer.message", "&eToday feels warmer than the others, maybe even too warm... %season% has arrived!");
+        addValueAndCommentDefault("lang.season.summer.message", "&eToday feels warmer than the others, maybe even too warm... %seasons:season% has arrived!");
         // Fall
         addComment("Fall");
         addValueAndCommentDefault("lang.season.fall.name", "&6Fall");
-        addValueAndCommentDefault("lang.season.fall.message", "&eA cool breeze whispers to the leaves that fall from the trees, it is %season%!");
+        addValueAndCommentDefault("lang.season.fall.message", "&eA cool breeze whispers to the leaves that fall from the trees, it is %seasons:season%!");
 
         /// WEATHER
         addVoid();
@@ -45,47 +49,47 @@ public class DefaultTXTLangEN extends TXTConfigObject {
         // Snowy
         addComment("Snowy");
         addValueAndCommentDefault("lang.weather.snowy.name", "&7Snowy");
-        addValueAndCommentDefault("lang.weather.snowy.message", "&7A great white blanket covers the world, it is %weather%");
+        addValueAndCommentDefault("lang.weather.snowy.message", "&7A great white blanket covers the world, it is %seasons:weather%");
         // Freezing
         addComment("Freezing");
         addValueAndCommentDefault("lang.weather.freezing.name", "&9Freezing");
-        addValueAndCommentDefault("lang.weather.freezing.message", "&3The water freezes with a sheet of ice and you feel a great cold, it is %weather%");
+        addValueAndCommentDefault("lang.weather.freezing.message", "&3The water freezes with a sheet of ice and you feel a great cold, it is %seasons:weather%");
         // Stormy
         addComment("Stormy");
         addValueAndCommentDefault("lang.weather.stormy.name", "&cStormy");
-        addValueAndCommentDefault("lang.weather.stormy.message", "&cA great %weather% &cbrews, the Gods are angry... Brace yourself!");
+        addValueAndCommentDefault("lang.weather.stormy.message", "&cA great %seasons:weather% &cbrews, the Gods are angry... Brace yourself!");
         // Cold
         addComment("Cold");
         addValueAndCommentDefault("lang.weather.cold.name", "&9Cold");
-        addValueAndCommentDefault("lang.weather.cold.message", "&3&3The water is so very %weather% &3today");
+        addValueAndCommentDefault("lang.weather.cold.message", "&3&3The water is so very %seasons:weather% &3today");
         // Warm
         addComment("Warm");
         addValueAndCommentDefault("lang.weather.warm.name", "&eWarm");
-        addValueAndCommentDefault("lang.weather.warm.message", "A soothing warmth hugs you as you move, it is a %weather% &eday");
+        addValueAndCommentDefault("lang.weather.warm.message", "A soothing warmth hugs you as you move, it is a %seasons:weather% &eday");
         // Hot
         addComment("Hot");
         addValueAndCommentDefault("lang.weather.hot.name", "&eHot");
-        addValueAndCommentDefault("lang.weather.hot.message", "&eIt is going to be very %weather% &etoday");
+        addValueAndCommentDefault("lang.weather.hot.message", "&eIt is going to be very %seasons:weather% &etoday");
         // Scorching
         addComment("Scorching");
         addValueAndCommentDefault("lang.weather.scorching.name", "&eScorching");
-        addValueAndCommentDefault("lang.weather.scorching.message", "&eThe sun burns your skin and the ground hurts to touch, it is %weather%");
+        addValueAndCommentDefault("lang.weather.scorching.message", "&eThe sun burns your skin and the ground hurts to touch, it is %seasons:weather%");
         // Rainy
         addComment("Rainy");
         addValueAndCommentDefault("lang.weather.rainy.name", "&9Rainy");
-        addValueAndCommentDefault("lang.weather.rainy.message", "&3A loud rain falls and wets the ground, it is %weather%");
+        addValueAndCommentDefault("lang.weather.rainy.message", "&3A loud rain falls and wets the ground, it is %seasons:weather%");
         // Chilly
         addComment("Chilly");
         addValueAndCommentDefault("lang.weather.chilly.name", "&9Chilly");
-        addValueAndCommentDefault("lang.weather.chilly.message", "&3You shiver as frost glistens around you, it is very %weather%");
+        addValueAndCommentDefault("lang.weather.chilly.message", "&3You shiver as frost glistens around you, it is very %seasons:weather%");
         // Breezy
         addComment("Breezy");
         addValueAndCommentDefault("lang.weather.breezy.name", "&7Breezy");
-        addValueAndCommentDefault("lang.weather.breezy.message", "&7A cool breeze touches your skin, it is going to be %weather%");
+        addValueAndCommentDefault("lang.weather.breezy.message", "&7A cool breeze touches your skin, it is going to be %seasons:weather%");
         // Beautiful
         addComment("Beautiful");
         addValueAndCommentDefault("lang.weather.beautiful.name", "&aBeautiful");
-        addValueAndCommentDefault("lang.weather.beautiful.message", "&aThe sun is shining, the grass is green and the weather is %weather%");
+        addValueAndCommentDefault("lang.weather.beautiful.message", "&aThe sun is shining, the grass is green and the weather is %seasons:weather%");
 
         /// CHALLENGES
         addVoid();

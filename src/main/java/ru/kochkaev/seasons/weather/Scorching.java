@@ -11,15 +11,15 @@ public class Scorching extends WeatherObject {
 
     public Scorching() {
         super("SCORCHING",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.scorching.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.scorching.name"),
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.scorching.chance"),
                 Collections.singletonList(Season.getSeasonByID("SUMMER")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.scorching.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.scorching.message"));
     }
 
     @Override

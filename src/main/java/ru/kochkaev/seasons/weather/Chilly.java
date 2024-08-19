@@ -11,15 +11,15 @@ public class Chilly extends WeatherObject {
 
     public Chilly() {
         super("CHILLY",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.chilly.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.chilly.name"),
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.chilly.chance"),
                 Collections.singletonList(Season.getSeasonByID("SPRING")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.chilly.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.chilly.message"));
     }
 
     @Override

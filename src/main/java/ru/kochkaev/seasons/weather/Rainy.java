@@ -11,15 +11,15 @@ public class Rainy extends WeatherObject {
 
     public Rainy() {
         super("RAINY",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.rainy.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.rainy.name"),
                 true, false,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.rainy.chance"),
                 Arrays.asList(Season.getSeasonByID("SPRING"), Season.getSeasonByID("FALL")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.rainy.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.rainy.message"));
     }
 
     @Override

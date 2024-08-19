@@ -11,15 +11,15 @@ public class Freezing extends WeatherObject {
 
     public Freezing() {
         super("FREEZING",
-                Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.freezing.name"),
+                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.freezing.name"),
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.freezing.chance"),
                 Collections.singletonList(Season.getSeasonByID("WINTER")), false);
     }
 
     @Override
-    public void onWeatherSet(MinecraftServer server) {
-        sendMessage(server, Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.freezing.message"));
+    public void onWeatherSet() {
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.freezing.message"));
     }
 
     @Override
