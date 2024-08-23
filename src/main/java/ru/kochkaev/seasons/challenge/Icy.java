@@ -45,7 +45,7 @@ public class Icy extends ChallengeObject {
     @Override
     public void register() {
         UseBlockCallback.EVENT.register((PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) -> {
-            if (isAllowed()) {
+            if (isAllowedInTicker()) {
                 BlockPos pos = hitResult.getBlockPos();
                 BlockPos posOffset= pos.offset(hitResult.getSide());
                 BlockState blockState = world.getBlockState(pos);
@@ -104,7 +104,7 @@ public class Icy extends ChallengeObject {
                                 if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
 //                                    playr.getServerWorld().setBlockState(postn, Blocks.AIR.getDefaultState());
-                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.icy.message.remove"));
+                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                 }
@@ -125,7 +125,7 @@ public class Icy extends ChallengeObject {
                                 if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
                                     playr.getServerWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
-                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.icy.message.remove"));
+                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                 }
@@ -141,7 +141,7 @@ public class Icy extends ChallengeObject {
             return ActionResult.PASS;
         });
         UseItemCallback.EVENT.register((PlayerEntity player, World world, Hand hand) -> {
-            if (isAllowed()){
+            if (isAllowedInTicker()){
                 Item item = player.getStackInHand(hand).getItem();
                 if (item == Items.BUCKET){
                     IFuncRet task = (arg) -> {
@@ -151,7 +151,7 @@ public class Icy extends ChallengeObject {
                         if (count == 1) {
                             if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                 playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
-                                sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.icy.message.remove"));
+                                sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.icy.message.get"));
                                 playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                 spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                             }

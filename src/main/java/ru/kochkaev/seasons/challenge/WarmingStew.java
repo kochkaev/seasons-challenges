@@ -43,7 +43,7 @@ public class WarmingStew extends ChallengeObject {
     }
 
     public boolean onConsume(PlayerEntity player) {
-        if (isAllowed()){
+        if (isAllowedInTicker()){
             if (stews.contains(player.getActiveItem().getItem())) {
                 sendMessage((ServerPlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.get"));
                 spawnParticles((ServerPlayerEntity) player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);

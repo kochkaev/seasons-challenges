@@ -4,9 +4,14 @@
   "version": "${version}",
   "name": "Seasons Challenges",
   "description": "",
-  "authors": [],
-  "contact": {},
-  "license": "All-Rights-Reserved",
+  "authors": [
+    "kochkaev"
+  ],
+  "contact": {
+    "issues": "https://github.com/kochkaev/seasons-challenges/issues",
+    "sources": "https://github.com/kochkaev/seasons-challenges"
+  },
+  "license": "All rights reserved",
   "icon": "assets/icon.png",
   "environment": "server",
   "entrypoints": {
@@ -22,8 +27,11 @@
     }
   ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "minecraft": "${minecraft_version}",
+    "fabricloader": ">=0.15.11",
+    "minecraft": [
+      "1.21",
+      "1.21.1"
+    ],
     "seasons-api": "*"
   }
 }

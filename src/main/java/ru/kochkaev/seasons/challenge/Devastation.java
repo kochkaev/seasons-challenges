@@ -41,7 +41,7 @@ public class Devastation extends ChallengeObject {
     }
 
     public boolean onHeal(LivingEntity entity) {
-        if (isAllowed()){
+        if (isAllowedInTicker()){
             if (!entity.hasStatusEffect(StatusEffects.REGENERATION)) {
                 if (entity.getType() == EntityType.PLAYER) spawnParticles((ServerPlayerEntity) entity, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
                 return false;
