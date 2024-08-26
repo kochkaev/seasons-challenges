@@ -28,18 +28,18 @@ When a new day arrives, new weather specific to the current season is set, and w
 - **Warm** _(Summer, clear)_.
 ### Challenges:
 - **Devastation** _(Stormy)_ - Disables regeneration with no regeneration effect.
-- **Feels Good** _(Warm)_ - gives a speed effect if the player is not wearing armor.
-- **Fluffy Coat** _(Snowy)_ - gives a resistance effect if the player is not wearing armor.
-- **Frostbite** _(Snowy and Freezing)_ - gives an icing effect if the player in the water or not wearing armor.
+- **Feels Good** _(Warm)_ - gives a speed effect if you is not wearing armor.
+- **Fluffy Coat** _(Snowy)_ - gives a resistance effect if you is not wearing armor.
+- **Frostbite** _(Snowy and Freezing)_ - gives an icing effect if you in the water or not wearing armor.
 - **Hold Onto Your Hat** _(Breezy)_ - drops your leather helmet with some probability.
 - **Hot Sand** _(Scorching)_ - Hits you when you stand on sand.
 - **Icy** _(Freezing)_ - prevents you from pouring and emptying a bucket of water.
 - **Primitive Heating** _(Cold)_ - gives a resistance effect if you have something hot in your inventory.
-- **Revitalized** _(Beautiful)_ - gives a regeneration effect if the player is in overworld.
+- **Revitalized** _(Beautiful)_ - gives a regeneration effect if you is in overworld.
 - **Soldering Iron** _(Scorching)_ - Hits you when you hold iron.
 - **Strong Current** _(Stormy)_ - Sinks your boats and gives you fatigue and nausea effects when you are in the water.
-- **Sweating** _(Hot)_ - Hits you and imposes a fatigue effect when the player is fully armored.
-- **The Shivers** _(Chilly)_ - Deals damage to the player when in water.
+- **Sweating** _(Hot)_ - Hits you and imposes a fatigue effect when you is fully armored.
+- **The Shivers** _(Chilly)_ - deals damage to you when in water.
 - **Warming Stew** _(Cold)_ - gives a regeneration effect when you eat any soup or stew.
 - **Wet Mud** _(Rainy)_ - slows you down when you walk on the ground.
 - **Wind In Your Boots** _(Breezy)_ - gives you a speed effect with some chance.
@@ -48,7 +48,7 @@ When a new day arrives, new weather specific to the current season is set, and w
 - `/seasons get season` - get current season.
 - `/seasons get weather` - get the current weather.
 - `/seasons get lang` - get the currently set language.
-- `/seasons get challenges` - get the list of active Challenges.
+- `/seasons get challenges` - get the list of active challenges.
 - `/seasons set season <season>` - set season.
 - `/seasons set weather <weather>` - set weather.
 - `/seasons set lang <language>` - set language.
