@@ -1,12 +1,12 @@
 package ru.kochkaev.seasons.config.lang;
 
-import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.TXTConfigObject;
 
 public class DefaultTXTLangRU extends TXTConfigObject {
     
     public DefaultTXTLangRU() {
-        super("Seasons Challenges", "RU_ru", "lang");
+        super("Seasons Challenges", "ru_RU", "lang");
     }
 
     public void generate() {

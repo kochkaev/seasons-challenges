@@ -1,12 +1,12 @@
 package ru.kochkaev.seasons.config.lang;
 
-import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.TXTConfigObject;
 
 public class DefaultTXTLangEN extends TXTConfigObject {
 
     public DefaultTXTLangEN() {
-        super("Seasons Challenges", "EN_us", "lang");
+        super("Seasons Challenges", "en_US", "lang");
     }
 
     public void generate() {

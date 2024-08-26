@@ -1,6 +1,6 @@
 package ru.kochkaev.seasons.season;
 
-import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.SeasonObject;
 import net.minecraft.server.MinecraftServer;
 

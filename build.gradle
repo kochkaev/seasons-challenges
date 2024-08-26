@@ -57,6 +57,17 @@ repositories {
             password = pass
         }
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
@@ -66,7 +77,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "ru.kochkaev:seasons-api:${project.seasons_api_version}"
+//    modImplementation "ru.kochkaev:seasons-api:${project.seasons_api_version}"
+    modImplementation "maven.modrinth:seasons-api:${project.seasons_api_version}"
 
 }
 

@@ -16,7 +16,7 @@
   "environment": "server",
   "entrypoints": {
     "main": [
-      "ru.kochkaev.seasons.Main"
+      "ru.kochkaev.seasons.SeasonsChallenges"
     ]
   },
   "mixins": [
@@ -32,6 +32,6 @@
       "1.21",
       "1.21.1"
     ],
-    "seasons-api": "*"
+    "seasons-api": ">=1.0-RC-2"
   }
 }

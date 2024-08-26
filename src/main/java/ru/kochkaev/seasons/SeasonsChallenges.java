@@ -5,16 +5,15 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.kochkaev.api.seasons.Register;
-import ru.kochkaev.api.seasons.config.Config;
-import ru.kochkaev.seasons.config.DefaultTXTConfig;
-import ru.kochkaev.seasons.config.lang.DefaultTXTLangRU;
+import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.object.ConfigObject;
 
-public class Main implements ModInitializer {
+public class SeasonsChallenges implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("Seasons Challenges");
 
 	@Override
 	public void onInitialize() {
-		Config.regModConfig(new Config("Seasons Challenges", "EN_us"));
+		Config.regModConfig(new ConfigObject("Seasons Challenges", "en_US"));
 		Register.registerAllInPackage("ru.kochkaev.seasons.config");
 		Register.registerAllInPackage("ru.kochkaev.seasons.season");
 		Register.registerAllInPackage("ru.kochkaev.seasons.weather");

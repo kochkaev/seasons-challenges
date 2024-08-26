@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
 

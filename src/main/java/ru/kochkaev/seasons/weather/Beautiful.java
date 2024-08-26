@@ -1,7 +1,7 @@
 package ru.kochkaev.seasons.weather;
 
 import net.minecraft.server.MinecraftServer;
-import ru.kochkaev.api.seasons.config.Config;
+import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.WeatherObject;
 import ru.kochkaev.api.seasons.service.Season;
 
