@@ -16,8 +16,6 @@ public class TheShivers extends ChallengeObject {
         super("TheShivers", Collections.singletonList(Weather.getWeatherByID("CHILLY")), false);
     }
 
-    private IFuncRet task;
-
     @Override
     public void register() {
     }
@@ -27,7 +25,7 @@ public class TheShivers extends ChallengeObject {
         if (player.getBlockStateAtPos().getBlock().equals(Blocks.WATER) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
                 sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.theShivers.message.get"));
-                task = giveFrozen(player);
+                giveFrozen(player);
             }
             if (countOfInARowCalls % ticksPerAction == 0) {
                 damageCold(player);
@@ -35,7 +33,7 @@ public class TheShivers extends ChallengeObject {
             }
             return countOfInARowCalls+1;
         }
-        else if (countOfInARowCalls > 0) removeFrozen(task);
+        else if (countOfInARowCalls > 0) removeFrozen(player);
         return 0;
     }
 

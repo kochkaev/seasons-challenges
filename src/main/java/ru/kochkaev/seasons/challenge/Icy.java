@@ -48,7 +48,7 @@ public class Icy extends ChallengeObject {
                             int count = (Integer) arg.getFirst();
                             ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
-                            IFuncRet tsk = (IFuncRet) arg.get(3);
+                            String key = (String) arg.get(3);
                             if (count == 10) {
                                 if (playr.getServerWorld().getBlockState(postn).getBlock() == Blocks.WATER_CAULDRON) {
                                     playr.getServerWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
@@ -56,19 +56,20 @@ public class Icy extends ChallengeObject {
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE);
                                 }
-                                Task.removeTask(tsk);
+                                Task.removeTask(key);
                                 return new ArrayList<>();
                             }
-                            return Arrays.asList(count + 1, playr, postn, tsk);
+                            return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        Task.addTask(task, Arrays.asList(0, player, pos, task));
+                        String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInCauldron" + new Random().nextInt(1000));
+                        Task.addTask(key, task, Arrays.asList(0, player, pos, key));
                     }
                     else if (blockStateOffset.getBlock() == Blocks.AIR || blockStateOffset.getBlock() == Blocks.WATER){
                         IFuncRet task = (arg) -> {
                             int count = (Integer) arg.getFirst();
                             ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
-                            IFuncRet tsk = (IFuncRet) arg.get(3);
+                            String key = (String) arg.get(3);
                             if (count == 10) {
                                 if (playr.getServerWorld().getBlockState(postn).getBlock() == Blocks.WATER) {
                                     playr.getServerWorld().setBlockState(postn, Blocks.ICE.getDefaultState());
@@ -76,12 +77,13 @@ public class Icy extends ChallengeObject {
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE);
                                 }
-                                Task.removeTask(tsk);
+                                Task.removeTask(key);
                                 return new ArrayList<>();
                             }
-                            return Arrays.asList(count + 1, playr, postn, tsk);
+                            return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        Task.addTask(task, Arrays.asList(0, player, posOffset, task));
+                        String key = getTaskKey((ServerPlayerEntity) player, "icingWater" + new Random().nextInt(1000));
+                        Task.addTask(key, task, Arrays.asList(0, player, posOffset, key));
                     }
                 }
                 if (item == Items.BUCKET) {
@@ -90,7 +92,7 @@ public class Icy extends ChallengeObject {
                             int count = (Integer) arg.getFirst();
                             ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
-                            IFuncRet tsk = (IFuncRet) arg.get(3);
+                            String key = (String) arg.get(3);
                             if (count == 1) {
                                 if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
@@ -99,19 +101,20 @@ public class Icy extends ChallengeObject {
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                 }
-                                Task.removeTask(tsk);
+                                Task.removeTask(key);
                                 return new ArrayList<>();
                             }
-                            return Arrays.asList(count + 1, playr, postn, tsk);
+                            return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        Task.addTask(task, Arrays.asList(0, player, posOffset, task));
+                        String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInBucket" + new Random().nextInt(1000));
+                        Task.addTask(key, task, Arrays.asList(0, player, posOffset, key));
                     }
                     else if (blockState.getBlock() == Blocks.WATER_CAULDRON && blockState.get(LeveledCauldronBlock.LEVEL) == 3) {
                         IFuncRet task = (arg) -> {
                             int count = (Integer) arg.getFirst();
                             ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
-                            IFuncRet tsk = (IFuncRet) arg.get(3);
+                            String key = (String) arg.get(3);
                             if (count == 20) {
                                 if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
@@ -120,12 +123,13 @@ public class Icy extends ChallengeObject {
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                 }
-                                Task.removeTask(tsk);
+                                Task.removeTask(key);
                                 return new ArrayList<>();
                             }
-                            return Arrays.asList(count + 1, playr, postn, tsk);
+                            return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        Task.addTask(task, Arrays.asList(0, player, pos, task));
+                        String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInWaterCauldron" + new Random().nextInt(1000));
+                        Task.addTask(key, task, Arrays.asList(0, player, pos, key));
                     }
                 }
             }
@@ -138,7 +142,7 @@ public class Icy extends ChallengeObject {
                     IFuncRet task = (arg) -> {
                         int count = (Integer) arg.getFirst();
                         ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
-                        IFuncRet tsk = (IFuncRet) arg.get(2);
+                        String key = (String) arg.get(2);
                         if (count == 1) {
                             if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                 playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
@@ -146,12 +150,13 @@ public class Icy extends ChallengeObject {
                                 playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                 spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                             }
-                            Task.removeTask(tsk);
+                            Task.removeTask(key);
                             return new ArrayList<>();
                         }
-                        return Arrays.asList(count + 1, playr, tsk);
+                        return Arrays.asList(count + 1, playr, key);
                     };
-                    Task.addTask(task, Arrays.asList(0, player, task));
+                    String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInBukkitWhenUse" + new Random().nextInt(1000));
+                    Task.addTask(key, task, Arrays.asList(0, player, key));
                 }
             }
             return TypedActionResult.pass(ItemStack.EMPTY);

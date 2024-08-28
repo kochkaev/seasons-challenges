@@ -12,7 +12,9 @@ import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Frostbite extends ChallengeObject {
 
@@ -21,8 +23,6 @@ public class Frostbite extends ChallengeObject {
     }
 
     private static final List<Block> waters = Arrays.asList(Blocks.WATER, Blocks.WATER_CAULDRON);
-
-    private IFuncRet task;
 
     @Override
     public void register() {
@@ -35,7 +35,7 @@ public class Frostbite extends ChallengeObject {
         if (waters.contains(player.getBlockStateAtPos().getBlock())) {
             if (countOfInARowCalls==0) {
                 player.setInPowderSnow(true);
-                task = giveFrozen(player);
+                giveFrozen(player);
             }
             damageCold(player);
             spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
@@ -44,7 +44,7 @@ public class Frostbite extends ChallengeObject {
         if (doNotWearArmor) {
             if (countOfInARowCalls==0) {
                 player.setInPowderSnow(true);
-                task = giveFrozen(player);
+                giveFrozen(player);
                 spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
                 return countOfInARowCalls+1;
             }
@@ -60,7 +60,7 @@ public class Frostbite extends ChallengeObject {
         }
         else if (countOfInARowCalls>0) {
             player.setInPowderSnow(false);
-            removeFrozen(task);
+            removeFrozen(player);
         }
         return 0;
     }
@@ -73,6 +73,6 @@ public class Frostbite extends ChallengeObject {
     @Override
     public void onChallengeEnd(ServerPlayerEntity player) {
         player.setInPowderSnow(false);
-        removeFrozen(task);
+        removeFrozen(player);
     }
 }
