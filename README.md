@@ -1,40 +1,4 @@
-# Seasons Challenges
-
-Differentiate your gameplay by adding **new weather** depending on the current season, and **weather-set Challenges** that you have to complete throughout the day!
-
-## How does it work?
-When a new day arrives, new weather specific to the current season is set, and weather-specific Challenges are set. For instance, in summer, when the "scorching" weather arrives, you can't hold metal objects in your hands or walk on sand without taking damage.
-
-***
-
-## What's in this extension for the Seasons API?
-### Seasons:
-- **Winter**;
-- **Spring**;
-- **Summer**;
-- **Fall**.
-### Weather:
-- **Beautiful** _(Spring and Summer, clear)_;
-- **Breezy** _(Spring and Fall, clear)_;
-- **Chilly** _(Spring, clear)_;
-- **Cold** _(Fall, clear)_;
-- **Freezing** _(Winter, clear)_;
-- **Hot** _(Summer, clear)_;
-- **Night** _(All seasons, depends on previous weather)_;
-- **Rainy** _(Spring and Fall, rainy)_;
-- **Scorching** _(Summer, clear)_;
-- **Snowy** _(Winter, rainy)_;
-- **Stormy** _(Fall, thunderstorms)_;
-- **Warm** _(Summer, clear)_.
-### Challenges:
-- **Devastation** _(Stormy)_ - Disables regeneration with no regeneration effect.
-- **Feels Good** _(Warm)_ - gives a speed effect if you is not wearing armor.
-- **Fluffy Coat** _(Snowy)_ - gives a resistance effect if you is not wearing armor.
-- **Frostbite** _(Snowy and Freezing)_ - gives an icing effect if you in the water or not wearing armor.
-- **Hold Onto Your Hat** _(Breezy)_ - drops your leather helmet with some probability.
-- **Hot Sand** _(Scorching)_ - Hits you when you stand on sand.
-- **Icy** _(Freezing)_ - prevents you from pouring and emptying a bucket of water.
-- **Primitive Heating** _(Cold)_ - gives a resistance effect if you have something hot in your inventory.
+inventory.
 - **Revitalized** _(Beautiful)_ - gives a regeneration effect if you is in overworld.
 - **Soldering Iron** _(Scorching)_ - Hits you when you hold iron.
 - **Strong Current** _(Stormy)_ - Sinks your boats and gives you fatigue and nausea effects when you are in the water.
@@ -61,7 +25,8 @@ When a new day arrives, new weather specific to the current season is set, and w
 ### Links
 - [Sources](https://github.com/kochkaev/seasons-challenges)
 - [Issues](https://github.com/kochkaev/seasons-challenges/issues)
-### Dependencies
+- [Modrinth](https://modrinth.com/mod/seasons-challenges)
+### Dependencieses
 - [Seasons API](https://modrinth.com/mod/seasons-api) (Required)
 - [Fabric API](https://modrinth.com/mod/fabric-api) (Required)
 - [Text Placeholder API](https://modrinth.com/mod/placeholder-api) (Optional)
