@@ -37,14 +37,14 @@ public class HoldOntoYourHat extends ChallengeObject {
             player.dropStack(helmet);
             player.getInventory().removeOne(helmet);
             spawnParticles(player, ParticleTypes.CLOUD, false, 1, 5);
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.holdOntoYourHat.message.get"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.holdOntoYourHat.message.get"));
         }
         return 0;
     }
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.holdOntoYourHat.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.holdOntoYourHat.message.trigger"));
     }
 
     @Override

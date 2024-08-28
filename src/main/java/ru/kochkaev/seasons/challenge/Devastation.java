@@ -32,7 +32,7 @@ public class Devastation extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.devastation.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.devastation.message.trigger"));
     }
 
     @Override

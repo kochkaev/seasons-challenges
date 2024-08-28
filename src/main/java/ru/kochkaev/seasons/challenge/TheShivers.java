@@ -24,7 +24,7 @@ public class TheShivers extends ChallengeObject {
     public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (player.getBlockStateAtPos().getBlock().equals(Blocks.WATER) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.theShivers.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.theShivers.message.get"));
                 giveFrozen(player);
             }
             if (countOfInARowCalls % ticksPerAction == 0) {
@@ -39,7 +39,7 @@ public class TheShivers extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.theShivers.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.theShivers.message.trigger"));
     }
 
     @Override

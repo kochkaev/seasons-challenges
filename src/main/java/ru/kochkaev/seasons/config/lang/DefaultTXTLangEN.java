@@ -96,71 +96,71 @@ public class DefaultTXTLangEN extends TXTConfigObject {
         addComment("* CHALLENGES");
         // Feels good
         addComment("Feels good");
-        addValueAndCommentDefault("lang.effect.feelsGood.message.trigger", "&aThe breeze feels so good on your skin, armour would just ruin the effect...");
-        addValueAndCommentDefault("lang.effect.feelsGood.message.get", "&aThe sun on your skin without armour gives you energy, Feels Good!");
-        addValueAndCommentDefault("lang.effect.feelsGood.message.remove", "&eAs you leave the world behind, the energising sunlight wears off...");
+        addValueAndCommentDefault("lang.challenge.feelsGood.message.trigger", "&aThe breeze feels so good on your skin, armour would just ruin the effect...");
+        addValueAndCommentDefault("lang.challenge.feelsGood.message.get", "&aThe sun on your skin without armour gives you energy, Feels Good!");
+        addValueAndCommentDefault("lang.challenge.feelsGood.message.remove", "&eAs you leave the world behind, the energising sunlight wears off...");
         // Fluffy Coat
         addComment("Fluffy Coat");
-        addValueAndCommentDefault("lang.effect.fluffyCoat.message.trigger", "&aYour armour gives you a soothing warmth, making you resistant to the harsh cold!");
-        addValueAndCommentDefault("lang.effect.fluffyCoat.message.get", "&aYour armour gives you a soothing warmth and makes you more Resistant to the world");
-        addValueAndCommentDefault("lang.effect.fluffyCoat.message.remove", "&cWithout armour, your body feels the cold once again and is no longer resistant to it");
+        addValueAndCommentDefault("lang.challenge.fluffyCoat.message.trigger", "&aYour armour gives you a soothing warmth, making you resistant to the harsh cold!");
+        addValueAndCommentDefault("lang.challenge.fluffyCoat.message.get", "&aYour armour gives you a soothing warmth and makes you more Resistant to the world");
+        addValueAndCommentDefault("lang.challenge.fluffyCoat.message.remove", "&cWithout armour, your body feels the cold once again and is no longer resistant to it");
         // Primitive Heating
         addComment("Primitive Heating");
-        addValueAndCommentDefault("lang.effect.primitiveHeating.message.trigger", "&9A source of heat would be great to carry around in this cold!");
-        addValueAndCommentDefault("lang.effect.primitiveHeating.message.get", "&aA hot item in your inventory warms your heart and makes you Resistant to the cold world");
-        addValueAndCommentDefault("lang.effect.primitiveHeating.message.remove", "&eYour body is no longer warmed and its Resistance wears away...");
+        addValueAndCommentDefault("lang.challenge.primitiveHeating.message.trigger", "&9A source of heat would be great to carry around in this cold!");
+        addValueAndCommentDefault("lang.challenge.primitiveHeating.message.get", "&aA hot item in your inventory warms your heart and makes you Resistant to the cold world");
+        addValueAndCommentDefault("lang.challenge.primitiveHeating.message.remove", "&eYour body is no longer warmed and its Resistance wears away...");
         // Revitalized
         addComment("Revitalized");
-        addValueAndCommentDefault("lang.effect.revitalized.message.trigger", "&aThis weather is so revitalizing!");
-        addValueAndCommentDefault("lang.effect.revitalized.message.get", "&aThe sun from this world is so &eRevitalising&a, it is Regenerating you!");
-        addValueAndCommentDefault("lang.effect.revitalized.message.remove", "&eAs the light of the world light leaves your skin, the &6Revitalising &eenergy leaves too...");
+        addValueAndCommentDefault("lang.challenge.revitalized.message.trigger", "&aThis weather is so revitalizing!");
+        addValueAndCommentDefault("lang.challenge.revitalized.message.get", "&aThe sun from this world is so &eRevitalising&a, it is Regenerating you!");
+        addValueAndCommentDefault("lang.challenge.revitalized.message.remove", "&eAs the light of the world light leaves your skin, the &6Revitalising &eenergy leaves too...");
         // Warming Stew
         addComment("Warming Stew");
-        addValueAndCommentDefault("lang.effect.warmingStew.message.trigger", "&7Your stomach starts to grumble and you begin to crave some hearty soup...");
-        addValueAndCommentDefault("lang.effect.warmingStew.message.get", "&aThat hit the spot, the delicious stew makes your wounds a little more bearable...");
+        addValueAndCommentDefault("lang.challenge.warmingStew.message.trigger", "&7Your stomach starts to grumble and you begin to crave some hearty soup...");
+        addValueAndCommentDefault("lang.challenge.warmingStew.message.get", "&aThat hit the spot, the delicious stew makes your wounds a little more bearable...");
         // Wind In Your Boots
         addComment("Wind In Your Boots");
-        addValueAndCommentDefault("lang.effect.windInYourBoots.message.trigger", "&7You feel the wind in your favour today!");
-        addValueAndCommentDefault("lang.effect.windInYourBoots.message.get", "&aYou feel a rush of Wind in your Boots and go hurtling forwards!");
+        addValueAndCommentDefault("lang.challenge.windInYourBoots.message.trigger", "&7You feel the wind in your favour today!");
+        addValueAndCommentDefault("lang.challenge.windInYourBoots.message.get", "&aYou feel a rush of Wind in your Boots and go hurtling forwards!");
         // Devastation
         addComment("Devastation");
-        addValueAndCommentDefault("lang.effect.devastation.message.trigger", "&cYour hearts beats rapidly, yours legs tremble and you find you cannot regenerate health until this Devastation passes!");
+        addValueAndCommentDefault("lang.challenge.devastation.message.trigger", "&cYour hearts beats rapidly, yours legs tremble and you find you cannot regenerate health until this Devastation passes!");
         // Frostbite
         addComment("Frostbite");
-        addValueAndCommentDefault("lang.effect.frostbite.message.trigger", "&cThe world is freezing over and so will you if you fail to get armour on!");
+        addValueAndCommentDefault("lang.challenge.frostbite.message.trigger", "&cThe world is freezing over and so will you if you fail to get armour on!");
         // Hold Onto Your Hat
         addComment("Hold Onto Your Hat");
-        addValueAndCommentDefault("lang.effect.holdOntoYourHat.message.trigger", "&7Be careful with your hat, the wind is getting up...");
-        addValueAndCommentDefault("lang.effect.holdOntoYourHat.message.get", "&eYour hat just blew off, oh dear!");
+        addValueAndCommentDefault("lang.challenge.holdOntoYourHat.message.trigger", "&7Be careful with your hat, the wind is getting up...");
+        addValueAndCommentDefault("lang.challenge.holdOntoYourHat.message.get", "&eYour hat just blew off, oh dear!");
         // Hot Sand
         addComment("Hot Sand");
-        addValueAndCommentDefault("lang.effect.hotSand.message.trigger", "&eWalking on sand in this heat must be painful!");
-        addValueAndCommentDefault("lang.effect.hotSand.message.get", "&eAuch! Sand is too hot!");
+        addValueAndCommentDefault("lang.challenge.hotSand.message.trigger", "&eWalking on sand in this heat must be painful!");
+        addValueAndCommentDefault("lang.challenge.hotSand.message.get", "&eAuch! Sand is too hot!");
         // Icy
         addComment("Icy");
-        addValueAndCommentDefault("lang.effect.icy.message.trigger", "&9A chill runs down your spine as water turns to ice!");
-        addValueAndCommentDefault("lang.effect.icy.message.get", "&cThe water freezes in your bucket...");
+        addValueAndCommentDefault("lang.challenge.icy.message.trigger", "&9A chill runs down your spine as water turns to ice!");
+        addValueAndCommentDefault("lang.challenge.icy.message.get", "&cThe water freezes in your bucket...");
         // Soldering Iron
         addComment("Soldering Iron");
-        addValueAndCommentDefault("lang.effect.solderingIron.message.trigger", "&eThe nearby iron starts to sizzle, better put it down for now...");
-        addValueAndCommentDefault("lang.effect.solderingIron.message.get", "&cThe iron is soldering hot, try not to hold it for too long!");
+        addValueAndCommentDefault("lang.challenge.solderingIron.message.trigger", "&eThe nearby iron starts to sizzle, better put it down for now...");
+        addValueAndCommentDefault("lang.challenge.solderingIron.message.get", "&cThe iron is soldering hot, try not to hold it for too long!");
         // Strong Current
         addComment("Strong Current");
-        addValueAndCommentDefault("lang.effect.strongCurrent.message.trigger", "&9The water flows with a strong current, it will be hard to wade through!");
-        addValueAndCommentDefault("lang.effect.strongCurrent.message.get", "&cThe current crashes against you and your muscles cry in pain...");
-        addValueAndCommentDefault("lang.effect.strongCurrent.message.remove", "&aSeasickness passes, the waters no longer bother you...");
+        addValueAndCommentDefault("lang.challenge.strongCurrent.message.trigger", "&9The water flows with a strong current, it will be hard to wade through!");
+        addValueAndCommentDefault("lang.challenge.strongCurrent.message.get", "&cThe current crashes against you and your muscles cry in pain...");
+        addValueAndCommentDefault("lang.challenge.strongCurrent.message.remove", "&aSeasickness passes, the waters no longer bother you...");
         // Sweating
         addComment("Sweating");
-        addValueAndCommentDefault("lang.effect.sweating.message.trigger", "&eThis is most definitely NOT the weather for full armour...");
-        addValueAndCommentDefault("lang.effect.sweating.message.get", "&cSweat drips from your forehead, it is too Hot for armour today...");
-        addValueAndCommentDefault("lang.effect.sweating.message.remove", "&aThe air turns cooler and you wipe the sweat from your forehead...");
+        addValueAndCommentDefault("lang.challenge.sweating.message.trigger", "&eThis is most definitely NOT the weather for full armour...");
+        addValueAndCommentDefault("lang.challenge.sweating.message.get", "&cSweat drips from your forehead, it is too Hot for armour today...");
+        addValueAndCommentDefault("lang.challenge.sweating.message.remove", "&aThe air turns cooler and you wipe the sweat from your forehead...");
         // The Shivers
         addComment("The Shivers");
-        addValueAndCommentDefault("lang.effect.theShivers.message.trigger", "&cThe water is near ice and dangerously cold to the touch...");
-        addValueAndCommentDefault("lang.effect.theShivers.message.get", "&cThe freezing water is killing you, get out of it if you want to live!");
+        addValueAndCommentDefault("lang.challenge.theShivers.message.trigger", "&cThe water is near ice and dangerously cold to the touch...");
+        addValueAndCommentDefault("lang.challenge.theShivers.message.get", "&cThe freezing water is killing you, get out of it if you want to live!");
         // Wet Mud
         addComment("Wet Mud");
-        addValueAndCommentDefault("lang.effect.wetMud.message.trigger", "&7The dirt coats your boots and becomes hard to move through in this weather...");
-        addValueAndCommentDefault("lang.effect.wetMud.message.get", "&eThe mud sticks to your boots, slowing you down...");
+        addValueAndCommentDefault("lang.challenge.wetMud.message.trigger", "&7The dirt coats your boots and becomes hard to move through in this weather...");
+        addValueAndCommentDefault("lang.challenge.wetMud.message.get", "&eThe mud sticks to your boots, slowing you down...");
     }
 }

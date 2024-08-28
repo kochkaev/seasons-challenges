@@ -35,7 +35,7 @@ public class Sweating extends ChallengeObject {
         if (isFullArmor) {
             if (!(player.getSteppingBlockState().getBlock() == Blocks.WATER || waters.contains(player.getBlockStateAtPos().getBlock()))) {
                 if (countOfInARowCalls == 0)
-                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.sweating.message.get"));
+                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.sweating.message.get"));
                 else if (countOfInARowCalls % ticksPerAction == 0) {
                     damageHot(player);
                     spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
@@ -49,7 +49,7 @@ public class Sweating extends ChallengeObject {
             }
         }
         else if (countOfInARowCalls > 0) {
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.sweating.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.sweating.message.remove"));
             return -1 - ticksPerAction;
         }
         else if (countOfInARowCalls == -1) {
@@ -62,7 +62,7 @@ public class Sweating extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.sweating.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.sweating.message.trigger"));
     }
 
     @Override

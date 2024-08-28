@@ -34,7 +34,7 @@ public class WarmingStew extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.warmingStew.message.trigger"));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class WarmingStew extends ChallengeObject {
     public boolean onConsume(PlayerEntity player) {
         if (isAllowedInTicker()){
             if (stews.contains(player.getActiveItem().getItem())) {
-                sendMessage((ServerPlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.warmingStew.message.get"));
+                sendMessage((ServerPlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.warmingStew.message.get"));
                 spawnParticles((ServerPlayerEntity) player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
                 giveEffect((ServerPlayerEntity) player, StatusEffects.REGENERATION, 20 * 10, 0);
             }

@@ -27,14 +27,14 @@ public class FluffyCoat extends ChallengeObject {
         for (ItemStack item : player.getArmorItems()) doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
         if (!doNotWearArmor) {
             if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.get"));
                 giveEffect(player, StatusEffects.RESISTANCE);
                 spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
             }
             return countOfInARowCalls+1;
         }
         else if (countOfInARowCalls>0) {
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.remove"));
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
             removeEffect(player, StatusEffects.RESISTANCE);
         }
@@ -43,7 +43,7 @@ public class FluffyCoat extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.fluffyCoat.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.trigger"));
     }
 
     @Override

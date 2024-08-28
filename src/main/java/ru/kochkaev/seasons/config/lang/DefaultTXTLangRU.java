@@ -96,71 +96,71 @@ public class DefaultTXTLangRU extends TXTConfigObject {
         addComment("* CHALLENGES");
         // Feels good
         addComment("Feels good");
-        addValueAndCommentDefault("lang.effect.feelsGood.message.trigger", "&aЛёгкий ветерок прекрасно ощущается кожей, но броня может испортить этот эффект...");
-        addValueAndCommentDefault("lang.effect.feelsGood.message.get", "&aЛучи солнца на вашей коже делают вас сильнее!");
-        addValueAndCommentDefault("lang.effect.feelsGood.message.remove", "&eКогда вы уходите из этого мира, ваш солнечный запас энергии покидает вас...");
+        addValueAndCommentDefault("lang.challenge.feelsGood.message.trigger", "&aЛёгкий ветерок прекрасно ощущается кожей, но броня может испортить этот эффект...");
+        addValueAndCommentDefault("lang.challenge.feelsGood.message.get", "&aЛучи солнца на вашей коже делают вас сильнее!");
+        addValueAndCommentDefault("lang.challenge.feelsGood.message.remove", "&eКогда вы уходите из этого мира, ваш солнечный запас энергии покидает вас...");
         // Fluffy Coat
         addComment("Fluffy Coat");
-        addValueAndCommentDefault("lang.effect.fluffyCoat.message.trigger", "&aБроня вас согревает, делает вас сильнее перед страшными морозами");
-        addValueAndCommentDefault("lang.effect.fluffyCoat.message.get", "&aБроня согревает вас!");
-        addValueAndCommentDefault("lang.effect.fluffyCoat.message.remove", "&cБез брони ваше тело больше не может сопротивляться морозам!");
+        addValueAndCommentDefault("lang.challenge.fluffyCoat.message.trigger", "&aБроня вас согревает, делает вас сильнее перед страшными морозами");
+        addValueAndCommentDefault("lang.challenge.fluffyCoat.message.get", "&aБроня согревает вас!");
+        addValueAndCommentDefault("lang.challenge.fluffyCoat.message.remove", "&cБез брони ваше тело больше не может сопротивляться морозам!");
         // Primitive Heating
         addComment("Primitive Heating");
-        addValueAndCommentDefault("lang.effect.primitiveHeating.message.trigger", "&9В такой холод хотелось бы иметь при себе что-нибудь тёплое");
-        addValueAndCommentDefault("lang.effect.primitiveHeating.message.get", "&aТёплый предмет в вашем инвенторе помогает вам сопротивляться морозам");
-        addValueAndCommentDefault("lang.effect.primitiveHeating.message.remove", "&eВы больше не можете согреться...");
+        addValueAndCommentDefault("lang.challenge.primitiveHeating.message.trigger", "&9В такой холод хотелось бы иметь при себе что-нибудь тёплое");
+        addValueAndCommentDefault("lang.challenge.primitiveHeating.message.get", "&aТёплый предмет в вашем инвенторе помогает вам сопротивляться морозам");
+        addValueAndCommentDefault("lang.challenge.primitiveHeating.message.remove", "&eВы больше не можете согреться...");
         // Revitalized
         addComment("Revitalized");
-        addValueAndCommentDefault("lang.effect.revitalized.message.trigger", "&aЭта погода так бодрит!");
-        addValueAndCommentDefault("lang.effect.revitalized.message.get", "&aСолнце этого мира &eрегенирирует&a вас!");
-        addValueAndCommentDefault("lang.effect.revitalized.message.remove", "&eВместе с лечами солнца уходит и &6регенерация &e...");
+        addValueAndCommentDefault("lang.challenge.revitalized.message.trigger", "&aЭта погода так бодрит!");
+        addValueAndCommentDefault("lang.challenge.revitalized.message.get", "&aСолнце этого мира &eрегенирирует&a вас!");
+        addValueAndCommentDefault("lang.challenge.revitalized.message.remove", "&eВместе с лечами солнца уходит и &6регенерация &e...");
         // Warming Stew
         addComment("Warming Stew");
-        addValueAndCommentDefault("lang.effect.warmingStew.message.trigger", "&7А ведь мама говорила, что желудок будет требовать вкусный суп...");
-        addValueAndCommentDefault("lang.effect.warmingStew.message.get", "&aО-да, это было вкусно! Урчание в животе становится меньше...");
+        addValueAndCommentDefault("lang.challenge.warmingStew.message.trigger", "&7А ведь мама говорила, что желудок будет требовать вкусный суп...");
+        addValueAndCommentDefault("lang.challenge.warmingStew.message.get", "&aО-да, это было вкусно! Урчание в животе становится меньше...");
         // Wind In Your Boots
         addComment("Wind In Your Boots");
-        addValueAndCommentDefault("lang.effect.windInYourBoots.message.trigger", "&7Сегодня ваш попутный ветер!");
-        addValueAndCommentDefault("lang.effect.windInYourBoots.message.get", "&aПопутный ветер сопроваждает вас, время ускоряться!");
+        addValueAndCommentDefault("lang.challenge.windInYourBoots.message.trigger", "&7Сегодня ваш попутный ветер!");
+        addValueAndCommentDefault("lang.challenge.windInYourBoots.message.get", "&aПопутный ветер сопроваждает вас, время ускоряться!");
         // Devastation
         addComment("Devastation");
-        addValueAndCommentDefault("lang.effect.devastation.message.trigger", "&cВаше сердце колотится, а ноги дрожат. Вы не сможете регенерироваться!");
+        addValueAndCommentDefault("lang.challenge.devastation.message.trigger", "&cВаше сердце колотится, а ноги дрожат. Вы не сможете регенерироваться!");
         // Frostbite
         addComment("Frostbite");
-        addValueAndCommentDefault("lang.effect.frostbite.message.trigger", "&cВесь мир промёрз насквозь... В след за ним инием покроетесь и вы, если вдруг решите снять броню!");
+        addValueAndCommentDefault("lang.challenge.frostbite.message.trigger", "&cВесь мир промёрз насквозь... В след за ним инием покроетесь и вы, если вдруг решите снять броню!");
         // Hold Onto Your Hat
         addComment("Hold Onto Your Hat");
-        addValueAndCommentDefault("lang.effect.holdOntoYourHat.message.trigger", "&7Будьте осторожны, ваша шляпа может улететь!");
-        addValueAndCommentDefault("lang.effect.holdOntoYourHat.message.get", "&eВаша шляпа улетела, боже мой!");
+        addValueAndCommentDefault("lang.challenge.holdOntoYourHat.message.trigger", "&7Будьте осторожны, ваша шляпа может улететь!");
+        addValueAndCommentDefault("lang.challenge.holdOntoYourHat.message.get", "&eВаша шляпа улетела, боже мой!");
         // Hot Sand
         addComment("Hot Sand");
-        addValueAndCommentDefault("lang.effect.hotSand.message.trigger", "&eХодить по песку может быть опасно!");
-        addValueAndCommentDefault("lang.effect.hotSand.message.get", "&eГорячо! Песок слишком горячий!");
+        addValueAndCommentDefault("lang.challenge.hotSand.message.trigger", "&eХодить по песку может быть опасно!");
+        addValueAndCommentDefault("lang.challenge.hotSand.message.get", "&eГорячо! Песок слишком горячий!");
         // Icy
         addComment("Icy");
-        addValueAndCommentDefault("lang.effect.icy.message.trigger", "&9Холодок обдувает вас, пока озёра леденеют");
-        addValueAndCommentDefault("lang.effect.icy.message.get", "&cВода замёрзла в ведре...");
+        addValueAndCommentDefault("lang.challenge.icy.message.trigger", "&9Холодок обдувает вас, пока озёра леденеют");
+        addValueAndCommentDefault("lang.challenge.icy.message.get", "&cВода замёрзла в ведре...");
         // Soldering Iron
         addComment("Soldering Iron");
-        addValueAndCommentDefault("lang.effect.solderingIron.message.trigger", "&eМеталл становится горячим, как вот-вот расплавится!");
-        addValueAndCommentDefault("lang.effect.solderingIron.message.get", "&cЖелезо слишком горячее, не держите его в руках!");
+        addValueAndCommentDefault("lang.challenge.solderingIron.message.trigger", "&eМеталл становится горячим, как вот-вот расплавится!");
+        addValueAndCommentDefault("lang.challenge.solderingIron.message.get", "&cЖелезо слишком горячее, не держите его в руках!");
         // Strong Current
         addComment("Strong Current");
-        addValueAndCommentDefault("lang.effect.strongCurrent.message.trigger", "&9На воде начинается настоящий шторм, будте осторожны!");
-        addValueAndCommentDefault("lang.effect.strongCurrent.message.get", "&cС водой шутки плохи! Волна накрывает вас...");
-        addValueAndCommentDefault("lang.effect.strongCurrent.message.remove", "&aМорская болезнь проходит... Больше не играйте в Джека Воробья!");
+        addValueAndCommentDefault("lang.challenge.strongCurrent.message.trigger", "&9На воде начинается настоящий шторм, будте осторожны!");
+        addValueAndCommentDefault("lang.challenge.strongCurrent.message.get", "&cС водой шутки плохи! Волна накрывает вас...");
+        addValueAndCommentDefault("lang.challenge.strongCurrent.message.remove", "&aМорская болезнь проходит... Больше не играйте в Джека Воробья!");
         // Sweating
         addComment("Sweating");
-        addValueAndCommentDefault("lang.effect.sweating.message.trigger", "&eЭта погода точно НЕ для ношения брони...");
-        addValueAndCommentDefault("lang.effect.sweating.message.get", "&cПродолжая носить броню, вы сваритесь...");
-        addValueAndCommentDefault("lang.effect.sweating.message.remove", "&aВоздух охлаждает вас, вы больше не рискуете быть сваренным заживо!");
+        addValueAndCommentDefault("lang.challenge.sweating.message.trigger", "&eЭта погода точно НЕ для ношения брони...");
+        addValueAndCommentDefault("lang.challenge.sweating.message.get", "&cПродолжая носить броню, вы сваритесь...");
+        addValueAndCommentDefault("lang.challenge.sweating.message.remove", "&aВоздух охлаждает вас, вы больше не рискуете быть сваренным заживо!");
         // The Shivers
         addComment("The Shivers");
-        addValueAndCommentDefault("lang.effect.theShivers.message.trigger", "&cВся вода покрывается инием, и вас покроет, если вы захотите искупаться...");
-        addValueAndCommentDefault("lang.effect.theShivers.message.get", "&cХолодная вода превратит вас в ледышку, вылезайте скорее!");
+        addValueAndCommentDefault("lang.challenge.theShivers.message.trigger", "&cВся вода покрывается инием, и вас покроет, если вы захотите искупаться...");
+        addValueAndCommentDefault("lang.challenge.theShivers.message.get", "&cХолодная вода превратит вас в ледышку, вылезайте скорее!");
         // Wet Mud
         addComment("Wet Mud");
-        addValueAndCommentDefault("lang.effect.wetMud.message.trigger", "&7Землю размывает, ваши ноги увязают в ней как в болоте...");
-        addValueAndCommentDefault("lang.effect.wetMud.message.get", "&eГрязь облепила ваши ботинки, мешая вам передвигаться...");
+        addValueAndCommentDefault("lang.challenge.wetMud.message.trigger", "&7Землю размывает, ваши ноги увязают в ней как в болоте...");
+        addValueAndCommentDefault("lang.challenge.wetMud.message.get", "&eГрязь облепила ваши ботинки, мешая вам передвигаться...");
     }
 }

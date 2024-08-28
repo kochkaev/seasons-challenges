@@ -14,7 +14,7 @@ import java.util.Collections;
 public class FeelsGood extends ChallengeObject {
 
     public FeelsGood() {
-        super("FeelsGood", Collections.singletonList(Weather.getWeatherByID("WARM")), true);
+        super("FeelsGood", Collections.singletonList(Weather.getWeatherByID("WARM")), false);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class FeelsGood extends ChallengeObject {
         for (ItemStack item : player.getArmorItems()) wearArmor = item.getItem() != Items.AIR || (wearArmor);
         if (!wearArmor) {
             if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.feelsGood.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.feelsGood.message.get"));
                 giveEffect(player, StatusEffects.SPEED);
                 spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
             }
@@ -36,7 +36,7 @@ public class FeelsGood extends ChallengeObject {
         }
         else if (countOfInARowCalls>0) {
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.feelsGood.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.feelsGood.message.remove"));
             removeEffect(player, StatusEffects.SPEED);
         }
         return  0;
@@ -44,7 +44,7 @@ public class FeelsGood extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.feelsGood.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.feelsGood.message.trigger"));
     }
 
     @Override

@@ -61,7 +61,7 @@ public class StrongCurrent extends ChallengeObject {
 //                }
         else if (player.getBlockStateAtPos().getBlock() == Blocks.WATER){
             if (countOfInARowCalls == 1)
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.strongCurrent.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.strongCurrent.message.get"));
             else if (countOfInARowCalls == ticksPerAction) {
                 spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
                 giveEffect(player, StatusEffects.NAUSEA);
@@ -82,7 +82,7 @@ public class StrongCurrent extends ChallengeObject {
                     spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, true, 1,10);
                     removeEffect(player, StatusEffects.NAUSEA);
                     removeEffect(player, StatusEffects.MINING_FATIGUE);
-                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.strongCurrent.message.remove"));
+                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.strongCurrent.message.remove"));
                 }
             }
             return countOfInARowCalls+1;
@@ -92,7 +92,7 @@ public class StrongCurrent extends ChallengeObject {
 
     @Override
     public void onChallengeStart(ServerPlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.effect.strongCurrent.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.strongCurrent.message.trigger"));
     }
 
     @Override
