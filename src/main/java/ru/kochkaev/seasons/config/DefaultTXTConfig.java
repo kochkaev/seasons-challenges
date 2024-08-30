@@ -18,43 +18,43 @@ public class DefaultTXTConfig extends TXTConfigObject{
 
         /// Chances of weather
         addVoid();
-        addComment("* WEATHER CHANCE");
+        addHeader("WEATHER CHANCE");
         // Night
         addComment("Night");
-        addValueAndCommentDefault("conf.weather.night.chance", "1");
+        addTypedValueAndCommentDefault("conf.weather.night.chance", 1);
         // Snowy
         addComment("Snowy");
-        addValueAndCommentDefault("conf.weather.snowy.chance", "15");
+        addTypedValueAndCommentDefault("conf.weather.snowy.chance", 15);
         // Freezing
         addComment("Freezing");
-        addValueAndCommentDefault("conf.weather.freezing.chance", "15");
+        addTypedValueAndCommentDefault("conf.weather.freezing.chance", 15);
         // Stormy
         addComment("Stormy");
-        addValueAndCommentDefault("conf.weather.stormy.chance", "10");
+        addTypedValueAndCommentDefault("conf.weather.stormy.chance", 10);
         // Cold
         addComment("Cold");
-        addValueAndCommentDefault("conf.weather.cold.chance", "40");
+        addTypedValueAndCommentDefault("conf.weather.cold.chance", 40);
         // Warm
         addComment("Warm");
-        addValueAndCommentDefault("conf.weather.warm.chance", "25");
+        addTypedValueAndCommentDefault("conf.weather.warm.chance", 25);
         // Hot
         addComment("Hot");
-        addValueAndCommentDefault("conf.weather.hot.chance", "20");
+        addTypedValueAndCommentDefault("conf.weather.hot.chance", 20);
         // Scorching
         addComment("Scorching");
-        addValueAndCommentDefault("conf.weather.scorching.chance", "10");
+        addTypedValueAndCommentDefault("conf.weather.scorching.chance", 10);
         // Rainy
         addComment("Rainy");
-        addValueAndCommentDefault("conf.weather.rainy.chance", "10");
+        addTypedValueAndCommentDefault("conf.weather.rainy.chance", 10);
         // Chilly
         addComment("Chilly");
-        addValueAndCommentDefault("conf.weather.chilly.chance", "15");
+        addTypedValueAndCommentDefault("conf.weather.chilly.chance", 15);
         // Breezy
         addComment("Breezy");
-        addValueAndCommentDefault("conf.weather.breezy.chance", "15");
+        addTypedValueAndCommentDefault("conf.weather.breezy.chance", 15);
         // Beautiful
         addComment("Beautiful");
-        addValueAndCommentDefault("conf.weather.beautiful.chance", "20");
+        addTypedValueAndCommentDefault("conf.weather.beautiful.chance", 20);
 
     }
 }

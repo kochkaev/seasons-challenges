@@ -5,7 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import ru.kochkaev.api.seasons.util.functional.IFuncRet;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
@@ -29,7 +29,7 @@ public class Frostbite extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         boolean doNotWearArmor = false;
         for (ItemStack item : player.getArmorItems()) doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
         if (waters.contains(player.getBlockStateAtPos().getBlock())) {
@@ -66,12 +66,12 @@ public class Frostbite extends ChallengeObject {
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.frostbite.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
         player.setInPowderSnow(false);
         removeFrozen(player);
     }

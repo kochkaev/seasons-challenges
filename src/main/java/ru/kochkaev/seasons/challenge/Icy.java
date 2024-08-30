@@ -10,7 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -18,6 +18,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.util.functional.IFuncRet;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
@@ -46,12 +47,12 @@ public class Icy extends ChallengeObject {
                     if (blockState.getBlock() == Blocks.CAULDRON) {
                         IFuncRet task = (arg) -> {
                             int count = (Integer) arg.getFirst();
-                            ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
+                            PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
                             String key = (String) arg.get(3);
                             if (count == 10) {
-                                if (playr.getServerWorld().getBlockState(postn).getBlock() == Blocks.WATER_CAULDRON) {
-                                    playr.getServerWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
+                                if (playr.getWorld().getBlockState(postn).getBlock() == Blocks.WATER_CAULDRON) {
+                                    playr.getWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
                                     sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE);
@@ -61,18 +62,18 @@ public class Icy extends ChallengeObject {
                             }
                             return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInCauldron" + new Random().nextInt(1000));
+                        String key = getTaskKey(player, "icingWaterInCauldron" + new Random().nextInt(1000));
                         Task.addTask(key, task, Arrays.asList(0, player, pos, key));
                     }
                     else if (blockStateOffset.getBlock() == Blocks.AIR || blockStateOffset.getBlock() == Blocks.WATER){
                         IFuncRet task = (arg) -> {
                             int count = (Integer) arg.getFirst();
-                            ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
+                            PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
                             String key = (String) arg.get(3);
                             if (count == 10) {
-                                if (playr.getServerWorld().getBlockState(postn).getBlock() == Blocks.WATER) {
-                                    playr.getServerWorld().setBlockState(postn, Blocks.ICE.getDefaultState());
+                                if (playr.getWorld().getBlockState(postn).getBlock() == Blocks.WATER) {
+                                    playr.getWorld().setBlockState(postn, Blocks.ICE.getDefaultState());
                                     sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE);
@@ -82,7 +83,7 @@ public class Icy extends ChallengeObject {
                             }
                             return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        String key = getTaskKey((ServerPlayerEntity) player, "icingWater" + new Random().nextInt(1000));
+                        String key = getTaskKey(player, "icingWater" + new Random().nextInt(1000));
                         Task.addTask(key, task, Arrays.asList(0, player, posOffset, key));
                     }
                 }
@@ -90,7 +91,7 @@ public class Icy extends ChallengeObject {
                     if (blockStateOffset.getBlock() == Blocks.WATER /* && !(blockState.getFluidState().get(WaterFluid.Still.LEVEL) > 0)*/) {
                         IFuncRet task = (arg) -> {
                             int count = (Integer) arg.getFirst();
-                            ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
+                            PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
                             String key = (String) arg.get(3);
                             if (count == 1) {
@@ -106,19 +107,19 @@ public class Icy extends ChallengeObject {
                             }
                             return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInBucket" + new Random().nextInt(1000));
+                        String key = getTaskKey(player, "icingWaterInBucket" + new Random().nextInt(1000));
                         Task.addTask(key, task, Arrays.asList(0, player, posOffset, key));
                     }
                     else if (blockState.getBlock() == Blocks.WATER_CAULDRON && blockState.get(LeveledCauldronBlock.LEVEL) == 3) {
                         IFuncRet task = (arg) -> {
                             int count = (Integer) arg.getFirst();
-                            ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
+                            PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
                             String key = (String) arg.get(3);
                             if (count == 20) {
                                 if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
-                                    playr.getServerWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
+                                    playr.getWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
                                     sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
@@ -128,7 +129,7 @@ public class Icy extends ChallengeObject {
                             }
                             return Arrays.asList(count + 1, playr, postn, key);
                         };
-                        String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInWaterCauldron" + new Random().nextInt(1000));
+                        String key = getTaskKey(player, "icingWaterInWaterCauldron" + new Random().nextInt(1000));
                         Task.addTask(key, task, Arrays.asList(0, player, pos, key));
                     }
                 }
@@ -141,7 +142,7 @@ public class Icy extends ChallengeObject {
                 if (item == Items.BUCKET){
                     IFuncRet task = (arg) -> {
                         int count = (Integer) arg.getFirst();
-                        ServerPlayerEntity playr = (ServerPlayerEntity) arg.get(1);
+                        PlayerEntity playr = (PlayerEntity) arg.get(1);
                         String key = (String) arg.get(2);
                         if (count == 1) {
                             if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
@@ -155,14 +156,14 @@ public class Icy extends ChallengeObject {
                         }
                         return Arrays.asList(count + 1, playr, key);
                     };
-                    String key = getTaskKey((ServerPlayerEntity) player, "icingWaterInBukkitWhenUse" + new Random().nextInt(1000));
+                    String key = getTaskKey(player, "icingWaterInBukkitWhenUse" + new Random().nextInt(1000));
                     Task.addTask(key, task, Arrays.asList(0, player, key));
                 }
             }
             return TypedActionResult.pass(ItemStack.EMPTY);
         });
         PlayerBlockBreakEvents.BEFORE.register((World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity entity) -> {
-            if (isAllowed() && state.getBlock() == Blocks.ICE && world == player.getServer().getOverworld()) {
+            if (isAllowedInTicker() && state.getBlock() == Blocks.ICE && world == SeasonsAPI.getOverworld()) {
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
                 return false;
             }
@@ -172,17 +173,17 @@ public class Icy extends ChallengeObject {
 
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         return 0;
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
 
     }
 }

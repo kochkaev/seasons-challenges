@@ -18,7 +18,7 @@ loom {
     splitEnvironmentSourceSets()
 
     mods {
-        "seasons" {
+        "seasons-challenges" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }
@@ -47,6 +47,10 @@ repositories {
         name = "Nucleoid"
         url = "https://maven.nucleoid.xyz/"
     }
+
+    maven { url = 'https://maven.shedaniel.me/' }
+    maven { url = "https://maven.terraformersmc.com/releases/" }
+
     maven {
         name = "GitHubPackages"
         url = 'https://maven.pkg.github.com/kochkaev/seasons-api'
@@ -79,6 +83,11 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 //    modImplementation "ru.kochkaev:seasons-api:${project.seasons_api_version}"
     modImplementation "maven.modrinth:seasons-api:${project.seasons_api_version}"
+
+    modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${clothconfig_version}") {
+        exclude(group: 'net.fabricmc.fabric-api')
+    }
 
 }
 

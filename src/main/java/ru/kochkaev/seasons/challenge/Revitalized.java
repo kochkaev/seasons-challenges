@@ -2,7 +2,8 @@ package ru.kochkaev.seasons.challenge;
 
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
@@ -20,8 +21,8 @@ public class Revitalized extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
-        if (player.getServerWorld() == player.getServerWorld().getServer().getOverworld()) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+        if (player.getWorld() == SeasonsAPI.getOverworld()) {
             if (countOfInARowCalls == 0) {
                 sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.get"));
                 giveEffect(player, StatusEffects.REGENERATION);
@@ -29,7 +30,7 @@ public class Revitalized extends ChallengeObject {
             }
             return 1;
         }
-        else if ((player.getServerWorld() != player.getServerWorld().getServer().getOverworld()) && countOfInARowCalls == 1) {
+        else if ((player.getWorld() != SeasonsAPI.getOverworld()) && countOfInARowCalls == 1) {
             removeEffect(player, StatusEffects.REGENERATION);
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.remove"));
@@ -38,12 +39,12 @@ public class Revitalized extends ChallengeObject {
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
         removeEffect(player, StatusEffects.REGENERATION);
     }
 }

@@ -4,7 +4,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import ru.kochkaev.api.seasons.util.functional.IFuncRet;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
@@ -19,6 +19,7 @@ public class StrongCurrent extends ChallengeObject {
         super("StrongCurrent", Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
     }
 
+    @SuppressWarnings("rawtypes")
     private static final List<EntityType> boats = Arrays.asList(EntityType.BOAT, EntityType.CHEST_BOAT);
 
     @Override
@@ -26,14 +27,14 @@ public class StrongCurrent extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (player.hasVehicle() && player.getSteppingBlockState().getBlock() == Blocks.WATER) {
             if (new Random().nextInt(100) <= 5) {
                 if (boats.contains(Objects.requireNonNull(player.getVehicle()).getType())) {
                     Entity boat = player.getVehicle();
                     IFuncRet task = (args) -> {
                         Entity bt = (Entity) args.getFirst();
-                        ServerPlayerEntity playr = (ServerPlayerEntity) args.get(1);
+                        PlayerEntity playr = (PlayerEntity) args.get(1);
                         int counter = (Integer) args.get(2);
                         IFuncRet tsk = (IFuncRet) args.get(3);
                         bt.onBubbleColumnCollision(true);
@@ -68,7 +69,7 @@ public class StrongCurrent extends ChallengeObject {
                 giveEffect(player, StatusEffects.MINING_FATIGUE);
             }
             else if (countOfInARowCalls % ticksPerAction == 0) {
-                player.getServerWorld().spawnParticles(ParticleTypes.BUBBLE, player.getX(), player.getY(), player.getZ(), 2, player.getX(), player.getY(), player.getZ(), 0.1);
+                Objects.requireNonNull(Objects.requireNonNull(player.getServer()).getWorld(player.getWorld().getRegistryKey())).spawnParticles(ParticleTypes.BUBBLE, player.getX(), player.getY(), player.getZ(), 2, player.getX(), player.getY(), player.getZ(), 0.1);
                 damageStorm(player);
             }
             return countOfInARowCalls + 1;
@@ -91,12 +92,12 @@ public class StrongCurrent extends ChallengeObject {
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.strongCurrent.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
         removeEffect(player, StatusEffects.MINING_FATIGUE);
         removeEffect(player, StatusEffects.NAUSEA);
     }

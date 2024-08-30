@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
@@ -26,7 +26,7 @@ public class WetMud extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (muddy.contains(player.getSteppingBlockState().getBlock()) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
                 giveEffect(player, StatusEffects.SLOWNESS, 1);
@@ -43,12 +43,12 @@ public class WetMud extends ChallengeObject {
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.wetMud.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
         removeEffect(player, StatusEffects.SLOWNESS);
     }
 }

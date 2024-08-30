@@ -3,7 +3,7 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
@@ -25,7 +25,7 @@ public class HotSand extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (!player.hasVehicle() && hots.contains(player.getSteppingBlockState().getBlock()) && !player.isSneaking()) {
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.hotSand.message.get"));
             spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
@@ -36,12 +36,12 @@ public class HotSand extends ChallengeObject {
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.hotSand.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
 
     }
 }

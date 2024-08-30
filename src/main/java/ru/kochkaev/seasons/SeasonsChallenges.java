@@ -13,8 +13,6 @@ public class SeasonsChallenges implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Config.regModConfig(new ConfigObject("Seasons Challenges", "en_US"));
-		Register.registerAllInPackage("ru.kochkaev.seasons.config");
 		Register.registerAllInPackage("ru.kochkaev.seasons.season");
 		Register.registerAllInPackage("ru.kochkaev.seasons.weather");
 		Register.registerAllInPackage("ru.kochkaev.seasons.challenge");

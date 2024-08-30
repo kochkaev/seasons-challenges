@@ -4,7 +4,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
@@ -17,7 +17,7 @@ public class PrimitiveHeating extends ChallengeObject {
         super("PrimitiveHeating", Collections.singletonList(Weather.getWeatherByID("COLD")), true);
     }
 
-    private static Item[] hots = {Items.LAVA_BUCKET, Items.BLAZE_POWDER, Items.BLAZE_ROD,
+    private static final Item[] hots = {Items.LAVA_BUCKET, Items.BLAZE_POWDER, Items.BLAZE_ROD,
             Items.DRAGON_BREATH, Items.MAGMA_CREAM};
 
     @Override
@@ -25,7 +25,7 @@ public class PrimitiveHeating extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         boolean  isHot  = false;
         for (Item item : hots) if (player.getInventory().count(item) > 0) isHot = true;
         if (isHot && countOfInARowCalls==0) {
@@ -46,12 +46,12 @@ public class PrimitiveHeating extends ChallengeObject {
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.primitiveHeating.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
         removeEffect(player, StatusEffects.RESISTANCE);
     }
 }

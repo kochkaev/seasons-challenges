@@ -5,7 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import ru.kochkaev.api.seasons.service.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.service.Weather;
@@ -28,26 +28,26 @@ public class WarmingStew extends ChallengeObject {
     }
 
     @Override
-    public int logic(ServerPlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
+    public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         return 0;
     }
 
     @Override
-    public void onChallengeStart(ServerPlayerEntity player) {
+    public void onChallengeStart(PlayerEntity player) {
         sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.warmingStew.message.trigger"));
     }
 
     @Override
-    public void onChallengeEnd(ServerPlayerEntity player) {
+    public void onChallengeEnd(PlayerEntity player) {
 
     }
 
     public boolean onConsume(PlayerEntity player) {
         if (isAllowedInTicker()){
             if (stews.contains(player.getActiveItem().getItem())) {
-                sendMessage((ServerPlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.warmingStew.message.get"));
-                spawnParticles((ServerPlayerEntity) player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
-                giveEffect((ServerPlayerEntity) player, StatusEffects.REGENERATION, 20 * 10, 0);
+                sendMessage((PlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.warmingStew.message.get"));
+                spawnParticles((PlayerEntity) player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
+                giveEffect((PlayerEntity) player, StatusEffects.REGENERATION, 20 * 10, 0);
             }
         }
         return true;
