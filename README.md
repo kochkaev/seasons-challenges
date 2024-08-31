@@ -63,7 +63,7 @@ When a new day arrives, new weather specific to the current season is set, and w
 - [Issues](https://github.com/kochkaev/seasons-challenges/issues)
 - [Modrinth](https://modrinth.com/mod/seasons-challenges)
 ### Dependencieses
-- [Seasons API](https://modrinth.com/mod/seasons-api)
+- [Seasons API](https://modrinth.com/mod/seasons-api) (Required)
 - [Fabric API](https://modrinth.com/mod/fabric-api) (Required)
 - [Text Placeholder API](https://modrinth.com/mod/placeholder-api) (Optional)
 - [Mod Menu](https://modrinth.com/mod/modmenu) (Optional)
