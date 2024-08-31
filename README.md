@@ -63,9 +63,11 @@ When a new day arrives, new weather specific to the current season is set, and w
 - [Issues](https://github.com/kochkaev/seasons-challenges/issues)
 - [Modrinth](https://modrinth.com/mod/seasons-challenges)
 ### Dependencieses
-- [Seasons API](https://modrinth.com/mod/seasons-api) (Required)
+- [Seasons API](https://modrinth.com/mod/seasons-api)
 - [Fabric API](https://modrinth.com/mod/fabric-api) (Required)
 - [Text Placeholder API](https://modrinth.com/mod/placeholder-api) (Optional)
+- [Mod Menu](https://modrinth.com/mod/modmenu) (Optional)
+- [Cloth Config API](https://modrinth.com/mod/cloth-config) (Optional)
 ### Idea by Harieo
 - Harieo on GitHub: https://github.com/Harieo/
 - Original plugin on GitHub: https://github.com/Harieo/Seasons/
@@ -75,4 +77,3 @@ When a new day arrives, new weather specific to the current season is set, and w
 - VK: https://vk.com/kleverdi/
 - YouTube: https://youtube.com/@kochkaev/
 - Contact email: kleverdi@vk.com
-### WARN: It's only server-side mod.
