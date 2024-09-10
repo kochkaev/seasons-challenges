@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import ru.kochkaev.api.seasons.service.Challenge;
+import ru.kochkaev.api.seasons.provider.Challenge;
 import ru.kochkaev.seasons.challenge.Devastation;
 
 import java.util.Collections;

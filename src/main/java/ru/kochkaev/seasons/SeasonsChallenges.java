@@ -5,7 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.kochkaev.api.seasons.Register;
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ConfigObject;
 
 public class SeasonsChallenges implements ModInitializer {

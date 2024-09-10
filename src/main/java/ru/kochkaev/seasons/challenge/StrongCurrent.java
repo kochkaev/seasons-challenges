@@ -5,13 +5,13 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
-import ru.kochkaev.api.seasons.util.functional.IFuncRet;
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
-import ru.kochkaev.api.seasons.service.Task;
-import ru.kochkaev.api.seasons.service.Weather;
+import ru.kochkaev.api.seasons.provider.Task;
+import ru.kochkaev.api.seasons.provider.Weather;
 
 import java.util.*;
+import java.util.function.Function;
 
 public class StrongCurrent extends ChallengeObject {
 
@@ -32,11 +32,12 @@ public class StrongCurrent extends ChallengeObject {
             if (new Random().nextInt(100) <= 5) {
                 if (boats.contains(Objects.requireNonNull(player.getVehicle()).getType())) {
                     Entity boat = player.getVehicle();
-                    IFuncRet task = (args) -> {
+                    Function<List<?>, List<?>> task = (args) -> {
                         Entity bt = (Entity) args.getFirst();
                         PlayerEntity playr = (PlayerEntity) args.get(1);
                         int counter = (Integer) args.get(2);
-                        IFuncRet tsk = (IFuncRet) args.get(3);
+//                        Function<List<?>, List<?>> tsk = (Function<List<?>, List<?>>) args.get(3);
+                        String tsk = (String) args.get(3);
                         bt.onBubbleColumnCollision(true);
                         bt.onBubbleColumnSurfaceCollision(true);
 //                        spawnParticles(player, ParticleTypes.BUBBLE, false, 0, 5);
@@ -48,7 +49,7 @@ public class StrongCurrent extends ChallengeObject {
                     };
                     giveEffect(player, StatusEffects.NAUSEA);
                     spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
-                    Task.addTask(task, Arrays.asList(boat, player, 0, task));
+                    Task.addTask(getTaskKey(player, "StrongCurrent"+ new Random().nextInt(1000)), task, Arrays.asList(boat, player, 0, task));
                 } else {
                     player.dismountVehicle();
                     spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);

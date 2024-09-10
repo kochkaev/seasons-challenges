@@ -19,14 +19,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import ru.kochkaev.api.seasons.SeasonsAPI;
-import ru.kochkaev.api.seasons.util.functional.IFuncRet;
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
-import ru.kochkaev.api.seasons.service.Task;
-import ru.kochkaev.api.seasons.service.Weather;
+import ru.kochkaev.api.seasons.provider.Task;
+import ru.kochkaev.api.seasons.provider.Weather;
 import net.minecraft.util.TypedActionResult;
 
 import java.util.*;
+import java.util.function.Function;
 
 public class Icy extends ChallengeObject {
 
@@ -45,7 +45,7 @@ public class Icy extends ChallengeObject {
                 Item item = player.getStackInHand(hand).getItem();
                 if (item == Items.WATER_BUCKET) {
                     if (blockState.getBlock() == Blocks.CAULDRON) {
-                        IFuncRet task = (arg) -> {
+                        Function<List<?>, List<?>> task = (arg) -> {
                             int count = (Integer) arg.getFirst();
                             PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
@@ -66,7 +66,7 @@ public class Icy extends ChallengeObject {
                         Task.addTask(key, task, Arrays.asList(0, player, pos, key));
                     }
                     else if (blockStateOffset.getBlock() == Blocks.AIR || blockStateOffset.getBlock() == Blocks.WATER){
-                        IFuncRet task = (arg) -> {
+                        Function<List<?>, List<?>> task = (arg) -> {
                             int count = (Integer) arg.getFirst();
                             PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
@@ -89,7 +89,7 @@ public class Icy extends ChallengeObject {
                 }
                 if (item == Items.BUCKET) {
                     if (blockStateOffset.getBlock() == Blocks.WATER /* && !(blockState.getFluidState().get(WaterFluid.Still.LEVEL) > 0)*/) {
-                        IFuncRet task = (arg) -> {
+                        Function<List<?>, List<?>> task = (arg) -> {
                             int count = (Integer) arg.getFirst();
                             PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
@@ -111,7 +111,7 @@ public class Icy extends ChallengeObject {
                         Task.addTask(key, task, Arrays.asList(0, player, posOffset, key));
                     }
                     else if (blockState.getBlock() == Blocks.WATER_CAULDRON && blockState.get(LeveledCauldronBlock.LEVEL) == 3) {
-                        IFuncRet task = (arg) -> {
+                        Function<List<?>, List<?>> task = (arg) -> {
                             int count = (Integer) arg.getFirst();
                             PlayerEntity playr = (PlayerEntity) arg.get(1);
                             BlockPos postn = (BlockPos) arg.get(2);
@@ -140,7 +140,7 @@ public class Icy extends ChallengeObject {
             if (isAllowedInTicker()){
                 Item item = player.getStackInHand(hand).getItem();
                 if (item == Items.BUCKET){
-                    IFuncRet task = (arg) -> {
+                    Function<List<?>, List<?>> task = (arg) -> {
                         int count = (Integer) arg.getFirst();
                         PlayerEntity playr = (PlayerEntity) arg.get(1);
                         String key = (String) arg.get(2);

@@ -3,7 +3,7 @@ package ru.kochkaev.seasons;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import ru.kochkaev.api.seasons.Register;
 import ru.kochkaev.api.seasons.object.ConfigObject;
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 
 public class SeasonsChallengesServer implements DedicatedServerModInitializer {
     @Override

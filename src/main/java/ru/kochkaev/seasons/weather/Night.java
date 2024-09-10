@@ -1,8 +1,8 @@
 package ru.kochkaev.seasons.weather;
 
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.WeatherObject;
-import ru.kochkaev.api.seasons.service.Season;
+import ru.kochkaev.api.seasons.provider.Season;
 import net.minecraft.server.MinecraftServer;
 
 import java.util.Arrays;
@@ -13,7 +13,7 @@ public class Night extends WeatherObject {
         super("NIGHT",
                 () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.name"),
                 null, null,
-                Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.night.chance"),
+                Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.night.chance"),
                 Arrays.asList(Season.getSeasonByID("WINTER"), Season.getSeasonByID("SPRING"), Season.getSeasonByID("SUMMER"), Season.getSeasonByID("FALL")), true);
     }
 

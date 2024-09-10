@@ -1,8 +1,8 @@
 package ru.kochkaev.seasons.weather;
 
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.WeatherObject;
-import ru.kochkaev.api.seasons.service.Season;
+import ru.kochkaev.api.seasons.provider.Season;
 import net.minecraft.server.MinecraftServer;
 
 import java.util.Collections;
@@ -13,7 +13,7 @@ public class Snowy extends WeatherObject {
         super("SNOWY",
                 () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.snowy.name"),
                 true, false,
-                Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.snowy.chance"),
+                Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.snowy.chance"),
                 Collections.singletonList(Season.getSeasonByID("WINTER")), false);
     }
 

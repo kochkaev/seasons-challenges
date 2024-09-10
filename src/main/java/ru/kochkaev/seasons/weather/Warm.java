@@ -1,8 +1,8 @@
 package ru.kochkaev.seasons.weather;
 
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.WeatherObject;
-import ru.kochkaev.api.seasons.service.Season;
+import ru.kochkaev.api.seasons.provider.Season;
 import net.minecraft.server.MinecraftServer;
 
 import java.util.Collections;
@@ -13,7 +13,7 @@ public class Warm extends WeatherObject {
         super("WARM",
                 () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.warm.name"),
                 false, false,
-                Config.getModConfig("Seasons Challenges").getConfig().getInt("conf.weather.warm.chance"),
+                Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.warm.chance"),
                 Collections.singletonList(Season.getSeasonByID("SUMMER")), false);
     }
 

@@ -3,10 +3,9 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.block.Blocks;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
-import ru.kochkaev.api.seasons.util.functional.IFuncRet;
-import ru.kochkaev.api.seasons.service.Config;
+import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
-import ru.kochkaev.api.seasons.service.Weather;
+import ru.kochkaev.api.seasons.provider.Weather;
 
 import java.util.Collections;
 
