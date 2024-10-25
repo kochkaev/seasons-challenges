@@ -29,7 +29,7 @@
     ]
   },
   "mixins": [
-    "seasons.mixins.json"
+    "seasons-challenges.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.15.11",
@@ -37,12 +37,12 @@
       "1.21",
       "1.21.1"
     ],
-    "seasons-api": ">=1.0-RC-5"
+    "seasons-api": ">=1.1"
   },
   "custom": {
     "modmenu": {
       "parent": {
-        "id": "seasons"
+        "id": "seasons-api-parent"
       },
       "update_checker": true
     }
