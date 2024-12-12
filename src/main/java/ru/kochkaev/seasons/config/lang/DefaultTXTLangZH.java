@@ -50,10 +50,10 @@ public class DefaultTXTLangZH extends ConfigFileObject {
                 .addValue("lang.weather.stormy.message", "&c一场超大的%seasons:weather% &c灾难,这是上帝在发怒，当心了！!", "Stormy onSet chat message.")
                 // Cold
                 .addValue("lang.weather.cold.name", "&9寒潮", "Cold display name.")
-                .addValue("lang.weather.cold.message", "&3&3今天的水很冷", "Cold onSet chat message.")
+                .addValue("lang.weather.cold.message", "&3今天的水很冷", "Cold onSet chat message.")
                 // Warm
                 .addValue("lang.weather.warm.name", "&e温和日", "Warm display name.")
-                .addValue("lang.weather.warm.message", "一股温暖的风迎面吹来,这是春风的拥抱 ", "Warm onSet chat message.")
+                .addValue("lang.weather.warm.message", "&e一股温暖的风迎面吹来,这是春风的拥抱 ", "Warm onSet chat message.")
                 // Hot
                 .addValue("lang.weather.hot.name", "&e炽热", "Hot display name.")
                 .addValue("lang.weather.hot.message", "&e今天真的是%seasons:weather% &e你要疯了", "Hot onSet chat message.")
@@ -90,7 +90,7 @@ public class DefaultTXTLangZH extends ConfigFileObject {
                 // Revitalized
                 .addValue("lang.challenge.revitalized.message.trigger", "&a这种天气真是令人振奋!", "Revitalized trigger message.")
                 .addValue("lang.challenge.revitalized.message.get", "&a来自这个世界的太阳是如此&eRevitalising&a，它正在使你再生!", "Revitalized onGet (apply) message.")
-                .addValue("lang.challenge.revitalized.message.remove", "&e当阳光光离开你的皮肤时，&6Revitalising & eenergy 的效果也会结束...", "Revitalized remove message.")
+                .addValue("lang.challenge.revitalized.message.remove", "&e当阳光光离开你的皮肤时，&6Revitalising &eenergy 的效果也会结束...", "Revitalized remove message.")
                 // Warming Stew
                 .addValue("lang.challenge.warmingStew.message.trigger", "&7你的肚子开始咕咕叫，你开始渴望喝点丰盛的汤...", "Warming Stew trigger message.")
                 .addValue("lang.challenge.warmingStew.message.get", "&a恰到好处，美味的炖菜让你的伤口更容易忍受...", "Warming Stew onGet (apply) message.")
