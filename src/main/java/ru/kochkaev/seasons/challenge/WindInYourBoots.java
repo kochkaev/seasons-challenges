@@ -3,6 +3,8 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -22,7 +24,7 @@ public class WindInYourBoots extends ChallengeObject {
 
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
-        if (countOfInARowCalls >= 60 * 2) {
+        if (player.getWorld().equals(SeasonsAPI.getOverworld()) && countOfInARowCalls >= 60 * 2) {
             int random = new Random().nextInt(10);
             if (random < 5 && !player.hasStatusEffect(StatusEffects.SPEED)) {
                 giveEffect(player, StatusEffects.SPEED, 20*10, 0);

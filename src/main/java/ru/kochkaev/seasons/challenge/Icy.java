@@ -37,7 +37,7 @@ public class Icy extends ChallengeObject {
     @Override
     public void register() {
         UseBlockCallback.EVENT.register((PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) -> {
-            if (isAllowedInTicker()) {
+            if (isAllowedInTicker() && player.getWorld().equals(SeasonsAPI.getOverworld())) {
                 BlockPos pos = hitResult.getBlockPos();
                 BlockPos posOffset= pos.offset(hitResult.getSide());
                 BlockState blockState = world.getBlockState(pos);
@@ -137,7 +137,7 @@ public class Icy extends ChallengeObject {
             return ActionResult.PASS;
         });
         UseItemCallback.EVENT.register((PlayerEntity player, World world, Hand hand) -> {
-            if (isAllowedInTicker()){
+            if (isAllowedInTicker() && player.getWorld().equals(SeasonsAPI.getOverworld())){
                 Item item = player.getStackInHand(hand).getItem();
                 if (item == Items.BUCKET){
                     Function<List<?>, List<?>> task = (arg) -> {

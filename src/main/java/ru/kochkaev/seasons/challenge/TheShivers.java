@@ -3,6 +3,8 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.block.Blocks;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -21,7 +23,7 @@ public class TheShivers extends ChallengeObject {
 
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
-        if (player.getBlockStateAtPos().getBlock().equals(Blocks.WATER) && !player.hasVehicle()) {
+        if (player.getWorld().equals(SeasonsAPI.getOverworld()) && player.getBlockStateAtPos().getBlock().equals(Blocks.WATER) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
                 sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.theShivers.message.get"));
                 giveFrozen(player);

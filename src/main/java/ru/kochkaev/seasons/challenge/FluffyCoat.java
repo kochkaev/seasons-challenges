@@ -5,6 +5,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -23,17 +25,20 @@ public class FluffyCoat extends ChallengeObject {
 
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction){
-        boolean doNotWearArmor = false;
-        for (ItemStack item : player.getArmorItems()) doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
-        if (!doNotWearArmor) {
-            if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.get"));
-                giveEffect(player, StatusEffects.RESISTANCE);
-                spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
+        if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
+            boolean doNotWearArmor = false;
+            for (ItemStack item : player.getArmorItems())
+                doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
+            if (!doNotWearArmor) {
+                if (countOfInARowCalls == 0) {
+                    sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.get"));
+                    giveEffect(player, StatusEffects.RESISTANCE);
+                    spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
+                }
+                return countOfInARowCalls + 1;
             }
-            return countOfInARowCalls+1;
         }
-        else if (countOfInARowCalls>0) {
+        if (countOfInARowCalls > 0) {
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.remove"));
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
             removeEffect(player, StatusEffects.RESISTANCE);

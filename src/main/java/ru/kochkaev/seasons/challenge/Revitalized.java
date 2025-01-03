@@ -3,6 +3,7 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
 import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
@@ -22,7 +23,8 @@ public class Revitalized extends ChallengeObject {
 
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
-        if (player.getWorld() == SeasonsAPI.getOverworld()) {
+        var isInOverworld =  player.getWorld().equals(SeasonsAPI.getOverworld());
+        if (isInOverworld) {
             if (countOfInARowCalls == 0) {
                 sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.get"));
                 giveEffect(player, StatusEffects.REGENERATION);
@@ -30,7 +32,7 @@ public class Revitalized extends ChallengeObject {
             }
             return 1;
         }
-        else if ((player.getWorld() != SeasonsAPI.getOverworld()) && countOfInARowCalls == 1) {
+        else if (countOfInARowCalls == 1) {
             removeEffect(player, StatusEffects.REGENERATION);
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.remove"));

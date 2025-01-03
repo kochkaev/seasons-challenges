@@ -4,6 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -23,21 +25,23 @@ public class HoldOntoYourHat extends ChallengeObject {
 
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
-        boolean haveLeatherHelmet = false;
-        ItemStack helmet = Items.LEATHER_HELMET.getDefaultStack();
-        for (ItemStack item : player.getArmorItems()){
-            if (item.getItem() == Items.LEATHER_HELMET) {
-                haveLeatherHelmet = true;
-                helmet = item;
-                break;
+        if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
+            boolean haveLeatherHelmet = false;
+            ItemStack helmet = Items.LEATHER_HELMET.getDefaultStack();
+            for (ItemStack item : player.getArmorItems()) {
+                if (item.getItem() == Items.LEATHER_HELMET) {
+                    haveLeatherHelmet = true;
+                    helmet = item;
+                    break;
+                }
             }
-        }
 //        Main.getLogger().info(String.valueOf(haveLeatherHelmet));
-        if (haveLeatherHelmet && new Random().nextInt(100) <= 10) {
-            player.dropStack(helmet);
-            player.getInventory().removeOne(helmet);
-            spawnParticles(player, ParticleTypes.CLOUD, false, 1, 5);
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.holdOntoYourHat.message.get"));
+            if (haveLeatherHelmet && new Random().nextInt(100) <= 10) {
+                player.dropStack(helmet);
+                player.getInventory().removeOne(helmet);
+                spawnParticles(player, ParticleTypes.CLOUD, false, 1, 5);
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.holdOntoYourHat.message.get"));
+            }
         }
         return 0;
     }

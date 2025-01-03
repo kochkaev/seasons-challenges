@@ -5,6 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -27,20 +29,21 @@ public class PrimitiveHeating extends ChallengeObject {
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         boolean  isHot  = false;
+        var isInOverworld = player.getWorld().equals(SeasonsAPI.getOverworld());
         for (Item item : hots) if (player.getInventory().count(item) > 0) isHot = true;
-        if (isHot && countOfInARowCalls==0) {
+        if (isHot && isInOverworld && countOfInARowCalls==0) {
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.primitiveHeating.message.get"));
             giveEffect(player, StatusEffects.RESISTANCE);
             spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
-            return countOfInARowCalls+1;
+            return 1;
         }
-        else if (!isHot && countOfInARowCalls>0) {
+        else if ((!isHot || !isInOverworld) && countOfInARowCalls>0) {
             sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.primitiveHeating.message.remove"));
             removeEffect(player, StatusEffects.RESISTANCE);
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
         }
         else if (countOfInARowCalls > 0) {
-            return countOfInARowCalls+1;
+            return 1;
         }
         return 0;
     }

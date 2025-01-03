@@ -6,6 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -43,7 +45,7 @@ public class WarmingStew extends ChallengeObject {
     }
 
     public boolean onConsume(PlayerEntity player) {
-        if (isAllowedInTicker()){
+        if (isAllowedInTicker() && player.getWorld().equals(SeasonsAPI.getOverworld())){
             if (stews.contains(player.getActiveItem().getItem())) {
                 sendMessage((PlayerEntity) player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.warmingStew.message.get"));
                 spawnParticles((PlayerEntity) player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);

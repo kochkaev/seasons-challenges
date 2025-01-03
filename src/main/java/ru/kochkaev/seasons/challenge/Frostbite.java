@@ -2,10 +2,13 @@ package ru.kochkaev.seasons.challenge;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.World;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -29,35 +32,37 @@ public class Frostbite extends ChallengeObject {
 
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
-        boolean doNotWearArmor = false;
-        for (ItemStack item : player.getArmorItems()) doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
-        if (waters.contains(player.getBlockStateAtPos().getBlock())) {
-            if (countOfInARowCalls==0) {
-                player.setInPowderSnow(true);
-                giveFrozen(player);
-            }
-            damageCold(player);
-            spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
-            return 1;
-        }
-        if (doNotWearArmor) {
-            if (countOfInARowCalls==0) {
-                player.setInPowderSnow(true);
-                giveFrozen(player);
-                spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
-                return countOfInARowCalls+1;
-            }
-            if (countOfInARowCalls==1) {
-                return countOfInARowCalls+1;
-            }
-            else if (countOfInARowCalls%ticksPerAction == 0) {
+        if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
+            boolean doNotWearArmor = false;
+            for (ItemStack item : player.getArmorItems())
+                doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
+            if (waters.contains(player.getBlockStateAtPos().getBlock()) && !(player.hasVehicle() && (player.getVehicle().getType().equals(EntityType.BOAT) || player.getVehicle().getType().equals(EntityType.CHEST_BOAT)))) {
+                if (countOfInARowCalls == 0) {
+                    player.setInPowderSnow(true);
+                    giveFrozen(player);
+                }
                 damageCold(player);
                 spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
                 return 1;
             }
-            return countOfInARowCalls+1;
+            if (doNotWearArmor) {
+                if (countOfInARowCalls == 0) {
+                    player.setInPowderSnow(true);
+                    giveFrozen(player);
+                    spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
+                    return countOfInARowCalls + 1;
+                }
+                if (countOfInARowCalls == 1) {
+                    return countOfInARowCalls + 1;
+                } else if (countOfInARowCalls % ticksPerAction == 0) {
+                    damageCold(player);
+                    spawnParticles(player, ParticleTypes.SNOWFLAKE, true, 0, 5);
+                    return 1;
+                }
+                return countOfInARowCalls + 1;
+            }
         }
-        else if (countOfInARowCalls>0) {
+        if (countOfInARowCalls > 0) {
             player.setInPowderSnow(false);
             removeFrozen(player);
         }

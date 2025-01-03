@@ -1,10 +1,14 @@
 package ru.kochkaev.seasons.challenge;
 
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionTypes;
+import ru.kochkaev.api.seasons.SeasonsAPI;
 import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
@@ -41,7 +45,7 @@ public class Devastation extends ChallengeObject {
     }
 
     public boolean onHeal(LivingEntity entity) {
-        if (isAllowedInTicker()){
+        if (isAllowedInTicker() && entity.getWorld().equals(SeasonsAPI.getOverworld())){
             if (!entity.hasStatusEffect(StatusEffects.REGENERATION)) {
                 if (entity.getType() == EntityType.PLAYER) spawnParticles((PlayerEntity) entity, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
                 return false;
