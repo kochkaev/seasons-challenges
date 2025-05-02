@@ -2,6 +2,7 @@ package ru.kochkaev.seasons.challenge;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -31,7 +32,8 @@ public class Sweating extends ChallengeObject {
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         boolean isFullArmor = true;
-        for (ItemStack item : player.getArmorItems()) isFullArmor = item.getItem() != Items.AIR && isFullArmor;
+        for (EquipmentSlot it : Arrays.stream(EquipmentSlot.values()).filter(it -> { return it.getType().equals(EquipmentSlot.Type.HUMANOID_ARMOR); }). toList())
+            isFullArmor = player.getEquippedStack(it).getItem() != Items.AIR && isFullArmor;
         if (isFullArmor) {
             if (!(player.getSteppingBlockState().getBlock() == Blocks.WATER || waters.contains(player.getBlockStateAtPos().getBlock()))) {
                 if (countOfInARowCalls == 0)

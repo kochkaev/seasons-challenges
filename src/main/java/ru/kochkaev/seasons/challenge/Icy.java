@@ -23,7 +23,6 @@ import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Task;
 import ru.kochkaev.api.seasons.provider.Weather;
-import net.minecraft.util.TypedActionResult;
 
 import java.util.*;
 import java.util.function.Function;
@@ -95,8 +94,8 @@ public class Icy extends ChallengeObject {
                             BlockPos postn = (BlockPos) arg.get(2);
                             String key = (String) arg.get(3);
                             if (count == 1) {
-                                if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
-                                    playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
+                                if (playr.getInventory().getSelectedStack().getItem() == Items.WATER_BUCKET) {
+                                    playr.getInventory().setSelectedStack(Items.BUCKET.getDefaultStack());
 //                                    playr.getServerWorld().setBlockState(postn, Blocks.AIR.getDefaultState());
                                     sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
@@ -117,8 +116,8 @@ public class Icy extends ChallengeObject {
                             BlockPos postn = (BlockPos) arg.get(2);
                             String key = (String) arg.get(3);
                             if (count == 20) {
-                                if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
-                                    playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
+                                if (playr.getInventory().getSelectedStack().getItem() == Items.WATER_BUCKET) {
+                                    playr.getInventory().setSelectedStack(Items.BUCKET.getDefaultStack());
                                     playr.getWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
                                     sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
@@ -145,8 +144,8 @@ public class Icy extends ChallengeObject {
                         PlayerEntity playr = (PlayerEntity) arg.get(1);
                         String key = (String) arg.get(2);
                         if (count == 1) {
-                            if (playr.getInventory().getMainHandStack().getItem() == Items.WATER_BUCKET) {
-                                playr.getInventory().setStack(playr.getInventory().selectedSlot, Items.BUCKET.getDefaultStack());
+                            if (playr.getInventory().getSelectedStack().getItem() == Items.WATER_BUCKET) {
+                                playr.getInventory().setSelectedStack(Items.BUCKET.getDefaultStack());
                                 sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
                                 playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                 spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
@@ -160,7 +159,7 @@ public class Icy extends ChallengeObject {
                     Task.addTask(key, task, Arrays.asList(0, player, key));
                 }
             }
-            return TypedActionResult.pass(ItemStack.EMPTY);
+            return ActionResult.PASS;
         });
         PlayerBlockBreakEvents.BEFORE.register((World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity entity) -> {
             if (isAllowedInTicker() && state.getBlock() == Blocks.ICE && world == SeasonsAPI.getOverworld()) {

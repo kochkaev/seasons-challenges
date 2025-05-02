@@ -31,7 +31,7 @@ public class SolderingIron extends ChallengeObject {
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
 //        Main.getLogger().info(player.getInventory().getMainHandStack().getItem().toString());
-        boolean contains = items.contains(player.getInventory().getMainHandStack().getItem());
+        boolean contains = items.contains(player.getInventory().getSelectedStack().getItem());
         if (contains) {
             if (countOfInARowCalls == 0) sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.solderingIron.message.get"));
             else {

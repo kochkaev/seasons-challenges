@@ -3,6 +3,7 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.vehicle.AbstractBoatEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -21,8 +22,8 @@ public class StrongCurrent extends ChallengeObject {
         super("StrongCurrent", Collections.singletonList(Weather.getWeatherByID("STORMY")), true);
     }
 
-    @SuppressWarnings("rawtypes")
-    private static final List<EntityType> boats = Arrays.asList(EntityType.BOAT, EntityType.CHEST_BOAT);
+//    @SuppressWarnings("rawtypes")
+//    private static final List<EntityType> boats = Arrays.asList(EntityType.BOAT, EntityType.CHEST_BOAT);
 
     @Override
     public void register() {
@@ -33,7 +34,7 @@ public class StrongCurrent extends ChallengeObject {
         if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
             if (player.hasVehicle() && player.getSteppingBlockState().getBlock() == Blocks.WATER) {
                 if (new Random().nextInt(100) <= 5) {
-                    if (boats.contains(Objects.requireNonNull(player.getVehicle()).getType())) {
+                    if (player.getVehicle() instanceof AbstractBoatEntity) {
                         Entity boat = player.getVehicle();
                         Function<List<?>, List<?>> task = (args) -> {
                             Entity bt = (Entity) args.getFirst();
@@ -42,7 +43,7 @@ public class StrongCurrent extends ChallengeObject {
 //                        Function<List<?>, List<?>> tsk = (Function<List<?>, List<?>>) args.get(3);
                             String tsk = (String) args.get(3);
                             bt.onBubbleColumnCollision(true);
-                            bt.onBubbleColumnSurfaceCollision(true);
+                            bt.onBubbleColumnSurfaceCollision(true, bt.getBlockPos());
 //                        spawnParticles(player, ParticleTypes.BUBBLE, false, 0, 5);
                             if (bt.shouldDismountUnderwater()) {
                                 Task.removeTask(tsk);
@@ -52,7 +53,8 @@ public class StrongCurrent extends ChallengeObject {
                         };
                         giveEffect(player, StatusEffects.NAUSEA);
                         spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
-                        Task.addTask(getTaskKey(player, "StrongCurrent" + new Random().nextInt(1000)), task, Arrays.asList(boat, player, 0, task));
+                        var taskName = getTaskKey(player, "StrongCurrent" + new Random().nextInt(1000));
+                        Task.addTask(taskName, task, Arrays.asList(boat, player, 0, taskName));
                     } else {
                         player.dismountVehicle();
                         spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);

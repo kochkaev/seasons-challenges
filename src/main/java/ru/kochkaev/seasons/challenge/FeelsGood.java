@@ -1,5 +1,6 @@
 package ru.kochkaev.seasons.challenge;
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class FeelsGood extends ChallengeObject {
@@ -28,7 +30,8 @@ public class FeelsGood extends ChallengeObject {
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction){
         if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
             boolean wearArmor = false;
-            for (ItemStack item : player.getArmorItems()) wearArmor = item.getItem() != Items.AIR || (wearArmor);
+            for (EquipmentSlot it : Arrays.stream(EquipmentSlot.values()).filter(it -> { return it.getType().equals(EquipmentSlot.Type.HUMANOID_ARMOR); }). toList())
+                wearArmor = player.getEquippedStack(it).getItem() != Items.AIR || (wearArmor);
             if (!wearArmor) {
                 if (countOfInARowCalls == 0) {
                     sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.feelsGood.message.get"));

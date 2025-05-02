@@ -33,10 +33,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.15.11",
-    "minecraft": [
-      "1.21",
-      "1.21.1"
-    ],
+    "minecraft": ">=1.21.5",
     "seasons-api": ">=1.2-BETA-2"
   },
   "custom": {

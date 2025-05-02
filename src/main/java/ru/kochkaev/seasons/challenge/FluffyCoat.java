@@ -1,5 +1,6 @@
 package ru.kochkaev.seasons.challenge;
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -11,6 +12,7 @@ import ru.kochkaev.api.seasons.provider.Config;
 import ru.kochkaev.api.seasons.object.ChallengeObject;
 import ru.kochkaev.api.seasons.provider.Weather;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class FluffyCoat extends ChallengeObject {
@@ -27,8 +29,8 @@ public class FluffyCoat extends ChallengeObject {
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction){
         if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
             boolean doNotWearArmor = false;
-            for (ItemStack item : player.getArmorItems())
-                doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
+            for (EquipmentSlot it : Arrays.stream(EquipmentSlot.values()).filter(it -> { return it.getType().equals(EquipmentSlot.Type.HUMANOID_ARMOR); }). toList())
+                doNotWearArmor = player.getEquippedStack(it).getItem() == Items.AIR || doNotWearArmor;
             if (!doNotWearArmor) {
                 if (countOfInARowCalls == 0) {
                     sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.fluffyCoat.message.get"));

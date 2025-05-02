@@ -3,6 +3,9 @@ package ru.kochkaev.seasons.challenge;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.vehicle.AbstractBoatEntity;
+import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
@@ -34,9 +37,9 @@ public class Frostbite extends ChallengeObject {
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (player.getWorld().equals(SeasonsAPI.getOverworld())) {
             boolean doNotWearArmor = false;
-            for (ItemStack item : player.getArmorItems())
-                doNotWearArmor = item.getItem() == Items.AIR || (doNotWearArmor);
-            if (waters.contains(player.getBlockStateAtPos().getBlock()) && !(player.hasVehicle() && (player.getVehicle().getType().equals(EntityType.BOAT) || player.getVehicle().getType().equals(EntityType.CHEST_BOAT)))) {
+            for (EquipmentSlot it : Arrays.stream(EquipmentSlot.values()).filter(it -> { return it.getType().equals(EquipmentSlot.Type.HUMANOID_ARMOR); }). toList())
+                doNotWearArmor = player.getEquippedStack(it).getItem() == Items.AIR || doNotWearArmor;
+            if (waters.contains(player.getBlockStateAtPos().getBlock()) && !(player.hasVehicle() && (player.getVehicle() instanceof AbstractBoatEntity))) {
                 if (countOfInARowCalls == 0) {
                     player.setInPowderSnow(true);
                     giveFrozen(player);
