@@ -26,7 +26,7 @@ public class Revitalized extends ChallengeObject {
         var isInOverworld =  player.getWorld().equals(SeasonsAPI.getOverworld());
         if (isInOverworld) {
             if (countOfInARowCalls == 0) {
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.revitalized.message.get"));
                 giveEffect(player, StatusEffects.REGENERATION);
                 spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
             }
@@ -35,14 +35,14 @@ public class Revitalized extends ChallengeObject {
         else if (countOfInARowCalls == 1) {
             removeEffect(player, StatusEffects.REGENERATION);
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.revitalized.message.remove"));
         }
         return 0;
     }
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.revitalized.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.revitalized.message.trigger"));
     }
 
     @Override

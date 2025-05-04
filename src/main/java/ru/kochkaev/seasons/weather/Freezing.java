@@ -10,8 +10,9 @@ import java.util.Collections;
 public class Freezing extends WeatherObject {
 
     public Freezing() {
-        super("FREEZING",
-                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.freezing.name"),
+        super(
+                () -> Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.freezing.name"),
+                "FREEZING",
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.freezing.chance"),
                 Collections.singletonList(Season.getSeasonByID("WINTER")), false);
@@ -19,7 +20,7 @@ public class Freezing extends WeatherObject {
 
     @Override
     public void onWeatherSet() {
-        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.freezing.message"));
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.freezing.message"));
     }
 
     @Override

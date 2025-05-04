@@ -32,13 +32,13 @@ public class PrimitiveHeating extends ChallengeObject {
         var isInOverworld = player.getWorld().equals(SeasonsAPI.getOverworld());
         for (Item item : hots) if (player.getInventory().count(item) > 0) isHot = true;
         if (isHot && isInOverworld && countOfInARowCalls==0) {
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.primitiveHeating.message.get"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.primitiveHeating.message.get"));
             giveEffect(player, StatusEffects.RESISTANCE);
             spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
             return 1;
         }
         else if ((!isHot || !isInOverworld) && countOfInARowCalls>0) {
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.primitiveHeating.message.remove"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.primitiveHeating.message.remove"));
             removeEffect(player, StatusEffects.RESISTANCE);
             spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, false, 1, 2);
         }
@@ -50,7 +50,7 @@ public class PrimitiveHeating extends ChallengeObject {
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.primitiveHeating.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.primitiveHeating.message.trigger"));
     }
 
     @Override

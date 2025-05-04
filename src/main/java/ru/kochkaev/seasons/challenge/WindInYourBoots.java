@@ -28,7 +28,7 @@ public class WindInYourBoots extends ChallengeObject {
             int random = new Random().nextInt(10);
             if (random < 5 && !player.hasStatusEffect(StatusEffects.SPEED)) {
                 giveEffect(player, StatusEffects.SPEED, 20*10, 0);
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.windInYourBoots.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.windInYourBoots.message.get"));
                 spawnParticles(player, ParticleTypes.HAPPY_VILLAGER, false, 1, 10);
             }
             return 0;
@@ -40,7 +40,7 @@ public class WindInYourBoots extends ChallengeObject {
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.windInYourBoots.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.windInYourBoots.message.trigger"));
     }
 
     @Override

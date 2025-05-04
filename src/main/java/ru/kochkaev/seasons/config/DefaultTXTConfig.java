@@ -11,7 +11,7 @@ public class DefaultTXTConfig extends ConfigFileObject {
             "\nOther config files:\n  - current.json - information about the current Weather/Season,\n    is updated when the server is turned off.\n  - lang - directory, contains translations of mod names/messages.";
 
     public DefaultTXTConfig() {
-        super("Seasons Challenges", "chances", "config", copyright);
+        super("Seasons Challenges", "chances", "config", copyright, 1);
     }
 
     public void generate(ConfigContentObject content) {

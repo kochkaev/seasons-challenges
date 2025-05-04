@@ -10,8 +10,9 @@ import java.util.Arrays;
 public class Beautiful extends WeatherObject {
 
     public Beautiful() {
-        super("BEAUTIFUL",
-                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.beautiful.name"),
+        super(
+                () -> Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.beautiful.name"),
+                "BEAUTIFUL",
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.beautiful.chance"),
                 Arrays.asList(Season.getSeasonByID("SPRING"), Season.getSeasonByID("SUMMER")), false);
@@ -19,7 +20,7 @@ public class Beautiful extends WeatherObject {
 
     @Override
     public void onWeatherSet() {
-        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.beautiful.message"));
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.beautiful.message"));
     }
 
     @Override

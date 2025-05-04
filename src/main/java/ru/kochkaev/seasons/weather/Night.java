@@ -10,8 +10,9 @@ import java.util.Arrays;
 public class Night extends WeatherObject {
 
     public Night() {
-        super("NIGHT",
-                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.name"),
+        super(
+                () -> Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.night.name"),
+                "NIGHT",
                 null, null,
                 Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.night.chance"),
                 Arrays.asList(Season.getSeasonByID("WINTER"), Season.getSeasonByID("SPRING"), Season.getSeasonByID("SUMMER"), Season.getSeasonByID("FALL")), true);
@@ -19,7 +20,7 @@ public class Night extends WeatherObject {
 
     @Override
     public void onWeatherSet() {
-        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.night.message"));
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.night.message"));
     }
 
     @Override

@@ -33,7 +33,7 @@ public class SolderingIron extends ChallengeObject {
 //        Main.getLogger().info(player.getInventory().getMainHandStack().getItem().toString());
         boolean contains = items.contains(player.getInventory().getSelectedStack().getItem());
         if (contains) {
-            if (countOfInARowCalls == 0) sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.solderingIron.message.get"));
+            if (countOfInARowCalls == 0) sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.solderingIron.message.get"));
             else {
                 spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0,10);
                 damageHot(player);
@@ -45,7 +45,7 @@ public class SolderingIron extends ChallengeObject {
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.solderingIron.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.solderingIron.message.trigger"));
     }
 
     @Override

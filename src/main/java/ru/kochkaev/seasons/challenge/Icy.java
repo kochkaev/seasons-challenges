@@ -52,7 +52,7 @@ public class Icy extends ChallengeObject {
                             if (count == 10) {
                                 if (playr.getWorld().getBlockState(postn).getBlock() == Blocks.WATER_CAULDRON) {
                                     playr.getWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
-                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
+                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.icy.message.get"));
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE);
                                 }
@@ -73,7 +73,7 @@ public class Icy extends ChallengeObject {
                             if (count == 10) {
                                 if (playr.getWorld().getBlockState(postn).getBlock() == Blocks.WATER) {
                                     playr.getWorld().setBlockState(postn, Blocks.ICE.getDefaultState());
-                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
+                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.icy.message.get"));
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE);
                                 }
@@ -97,7 +97,7 @@ public class Icy extends ChallengeObject {
                                 if (playr.getInventory().getSelectedStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setSelectedStack(Items.BUCKET.getDefaultStack());
 //                                    playr.getServerWorld().setBlockState(postn, Blocks.AIR.getDefaultState());
-                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
+                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                 }
@@ -119,7 +119,7 @@ public class Icy extends ChallengeObject {
                                 if (playr.getInventory().getSelectedStack().getItem() == Items.WATER_BUCKET) {
                                     playr.getInventory().setSelectedStack(Items.BUCKET.getDefaultStack());
                                     playr.getWorld().setBlockState(postn, Blocks.CAULDRON.getDefaultState());
-                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
+                                    sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.icy.message.get"));
                                     playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                     spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                                 }
@@ -146,7 +146,7 @@ public class Icy extends ChallengeObject {
                         if (count == 1) {
                             if (playr.getInventory().getSelectedStack().getItem() == Items.WATER_BUCKET) {
                                 playr.getInventory().setSelectedStack(Items.BUCKET.getDefaultStack());
-                                sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.get"));
+                                sendMessage(playr, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.icy.message.get"));
                                 playr.playSound(SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, 1, 0);
                                 spawnParticles(playr, ParticleTypes.CLOUD, false, 0, 5);
                             }
@@ -178,7 +178,7 @@ public class Icy extends ChallengeObject {
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.icy.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.icy.message.trigger"));
     }
 
     @Override

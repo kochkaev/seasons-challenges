@@ -32,7 +32,7 @@ public class WetMud extends ChallengeObject {
         if (player.getWorld().equals(SeasonsAPI.getOverworld()) && muddy.contains(player.getSteppingBlockState().getBlock()) && !player.hasVehicle()) {
             if (countOfInARowCalls == 0) {
                 giveEffect(player, StatusEffects.SLOWNESS, 1);
-                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.wetMud.message.get"));
+                sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.wetMud.message.get"));
                 spawnParticles(player, ParticleTypes.ANGRY_VILLAGER, true, 1, 2);
             }
             return countOfInARowCalls+1;
@@ -46,7 +46,7 @@ public class WetMud extends ChallengeObject {
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.wetMud.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.wetMud.message.trigger"));
     }
 
     @Override

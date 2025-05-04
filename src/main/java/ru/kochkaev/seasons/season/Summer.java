@@ -10,12 +10,12 @@ import java.util.Collections;
 public class Summer extends SeasonObject {
 
     public Summer() {
-        super("SUMMER", () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.summer.name"), new ArrayList<>(), Collections.singletonList("SPRING"), () -> Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.season.summer.chance"));
+        super(() -> Config.getModConfig("Seasons Challenges").getLang().getText("lang.season.summer.name"), "SUMMER", new ArrayList<>(), Collections.singletonList("SPRING"), () -> Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.season.summer.chance"));
     }
 
     @Override
     public void onSeasonSet() {
-        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.season.summer.message"));
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getText("lang.season.summer.message"));
     }
     @Override
     public void onSeasonRemove() {

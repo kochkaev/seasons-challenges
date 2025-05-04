@@ -28,7 +28,7 @@ public class HotSand extends ChallengeObject {
     @Override
     public int logic(PlayerEntity player, int countOfInARowCalls, int ticksPerAction) {
         if (!player.hasVehicle() && hots.contains(player.getSteppingBlockState().getBlock()) && !player.isSneaking()) {
-            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.hotSand.message.get"));
+            sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.hotSand.message.get"));
             spawnParticles(player, ParticleTypes.SMALL_FLAME, false, 0, 10);
             damageHot(player);
             return countOfInARowCalls+1;
@@ -38,7 +38,7 @@ public class HotSand extends ChallengeObject {
 
     @Override
     public void onChallengeStart(PlayerEntity player) {
-        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getString("lang.challenge.hotSand.message.trigger"));
+        sendMessage(player, Config.getModConfig("Seasons Challenges").getLang().getText("lang.challenge.hotSand.message.trigger"));
     }
 
     @Override

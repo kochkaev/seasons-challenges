@@ -10,8 +10,9 @@ import java.util.Arrays;
 public class Breezy extends WeatherObject {
 
     public Breezy() {
-        super("BREEZY",
-                () -> Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.breezy.name"),
+        super(
+                () -> Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.breezy.name"),
+                "BREEZY",
                 false, false,
                 Config.getModConfig("Seasons Challenges").getConfig("chances").getInt("conf.weather.breezy.chance"),
                 Arrays.asList(Season.getSeasonByID("SPRING"), Season.getSeasonByID("FALL")), false);
@@ -19,7 +20,7 @@ public class Breezy extends WeatherObject {
 
     @Override
     public void onWeatherSet() {
-        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getString("lang.weather.breezy.message"));
+        sendMessage(Config.getModConfig("Seasons Challenges").getLang().getText("lang.weather.breezy.message"));
     }
 
     @Override
